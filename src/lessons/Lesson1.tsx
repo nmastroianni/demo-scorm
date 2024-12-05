@@ -14,7 +14,7 @@ const Lesson1: React.FC = () => {
 
       <PageWrapper>
         <p>
-          The facilitation approach to teaching at OCC emphasizes active
+          The facilitation approach to teaching at XYZ emphasizes active
           engagement, where instructors guide, support, and interact with
           students through asynchronous discussions, feedback, and resources,
           rather than delivering traditional lectures. This approach fosters a
