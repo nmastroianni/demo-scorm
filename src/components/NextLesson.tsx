@@ -5,7 +5,7 @@ import { useCourse } from './CourseProvider'
 type NextLessonProps = {
   text?: string
 }
-const PreviousLesson: React.FC<NextLessonProps> = ({ text = 'Go Back' }) => {
+const NextLesson: React.FC<NextLessonProps> = ({ text = 'Go Forward' }) => {
   const { currentLesson, setCurrentLesson } = useCourse()
 
   return (
@@ -24,4 +24,4 @@ const PreviousLesson: React.FC<NextLessonProps> = ({ text = 'Go Back' }) => {
   )
 }
 
-export default PreviousLesson
+export default NextLesson

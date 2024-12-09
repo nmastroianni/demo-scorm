@@ -7,7 +7,10 @@ import React from 'react'
 const Lesson0: React.FC = () => {
   const { currentLesson, setCurrentLesson } = useCourse()
   return (
-    <motion.div exit={{ opacity: 0, transition: { duration: 1 } }}>
+    <motion.div
+      exit={{ opacity: 0, transition: { duration: 1 } }}
+      className="prose"
+    >
       <p>
         Welcome to the Course Overview. It's actually lesson {currentLesson}.{' '}
         <br />
