@@ -1,5 +1,6 @@
 // Lesson1.tsx
 import loon from '@/assets/loon.jpg'
+import LabeledImage from '@/components/LabeledImage'
 import NextLesson from '@/components/NextLesson'
 import PageWrapper from '@/components/PageWrapper'
 import PreviousLesson from '@/components/PreviousLesson'
@@ -21,12 +22,11 @@ const Lesson1: React.FC = () => {
           collaborative learning environment that encourages student
           independence and critical thinking.
         </p>
-        <p className="h-[1000px]">
+        <p>
           This approach also ensures that instructors are not overwhelmed with
           administrative tasks, allowing them to maintain a sustainable and
           effective teaching practice.
         </p>
-        <div className="h-[500px]" />
       </PageWrapper>
       <PageWrapper prose={false}>
         <TextAside imageUrl={loon} altText="">
@@ -46,6 +46,7 @@ const Lesson1: React.FC = () => {
             diverse learning needs.
           </p>
         </TextAside>
+        <LabeledImage />
       </PageWrapper>
 
       <NextLesson />
