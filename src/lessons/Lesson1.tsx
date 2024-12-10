@@ -6,9 +6,36 @@ import PageWrapper from '@/components/PageWrapper'
 import PreviousLesson from '@/components/PreviousLesson'
 import TextAside from '@/components/TextAside'
 import { motion } from 'motion/react'
+
 import React from 'react'
 
 const Lesson1: React.FC = () => {
+  const hotpsots: Array<Hotspot> = [
+    {
+      top: '24%',
+      left: '63%',
+      size: 40,
+      content: (
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+          possimus aut. Voluptatem quam aliquid corporis assumenda provident
+          maiores animi eos fuga amet eligendi hic, optio quo dolore quia vitae
+          quae.
+        </p>
+      ),
+    },
+    {
+      top: '56%',
+      left: '19%',
+      color: 'aqua',
+      content: (
+        <p>
+          This is water falling from the beak of a common loon. High-speed
+          photography at its finest.
+        </p>
+      ),
+    },
+  ]
   return (
     <motion.section exit={{ opacity: 0, transition: { duration: 1 } }}>
       <PreviousLesson text="Home" />
@@ -46,7 +73,7 @@ const Lesson1: React.FC = () => {
             diverse learning needs.
           </p>
         </TextAside>
-        <LabeledImage />
+        <LabeledImage imageUrl={loon} hotspots={hotpsots} />
       </PageWrapper>
 
       <NextLesson />

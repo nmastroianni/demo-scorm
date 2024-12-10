@@ -1,30 +1,44 @@
-import loon from '@/assets/loon.jpg'
+import { cn } from '@/lib/utils'
+import { MapPin } from 'lucide-react'
+import React from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 
-const LabeledImage = () => {
+interface LabledImageProps {
+  imageUrl: string
+  imageAlt?: string
+  hotspots: Hotspot[]
+}
+const LabeledImage: React.FC<LabledImageProps> = ({
+  imageAlt = 'decorative image',
+  imageUrl,
+  hotspots,
+}) => {
   return (
-    <div className="relative inline-block">
-      <img src={loon} alt="" />
-      <Popover>
-        <PopoverTrigger className="text-4xl absolute top-[30%] right-[30%]">
-          *
-        </PopoverTrigger>
-        <PopoverContent>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            possimus aut. Voluptatem quam aliquid corporis assumenda provident
-            maiores animi eos fuga amet eligendi hic, optio quo dolore quia
-            vitae quae.
-          </p>
-          <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-            possimus aut. Voluptatem quam aliquid corporis assumenda provident
-            maiores animi eos fuga amet eligendi hic, optio quo dolore quia
-            vitae quae.
-          </p>
-        </PopoverContent>
-      </Popover>
+    <div className="relative flex justify-center">
+      <div className="relative">
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className="border-4 dark:border-slate-500"
+        />
+        {hotspots.map((hotspot, index) => {
+          return (
+            <Popover key={index}>
+              <PopoverTrigger
+                className={cn(`animate-pulse text-4xl absolute`)}
+                style={{ top: hotspot.top, left: hotspot.left }}
+              >
+                <MapPin
+                  width={hotspot.size ? hotspot.size : 30}
+                  height={hotspot.size ? hotspot.size : 30}
+                  color={hotspot.color ? hotspot.color : 'white'}
+                />
+              </PopoverTrigger>
+              <PopoverContent>{hotspot.content}</PopoverContent>
+            </Popover>
+          )
+        })}
+      </div>
     </div>
   )
 }
