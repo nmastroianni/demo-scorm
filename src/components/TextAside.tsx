@@ -12,13 +12,14 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
     <div className="p-4">
       <div className="flex flex-wrap gap-x-4 items-center">
         <div className="md:flex-1 py-5">
-          <WhileInView direction="left">
+          <WhileInView direction="right">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
                 <img
                   src={imageUrl}
                   alt={altText}
                   className="rounded-lg shadow-md shadow-slate-900 cursor-zoom-in"
+                  title={altText}
                 />
               </DialogTrigger>
               <DialogContent className="max-w-screen-lg p-8">
@@ -34,8 +35,8 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
             </Dialog>
           </WhileInView>
         </div>
-        <div className="md:flex-1 prose lg:prose-lg xl:prose-xl mx-auto p-4 md:p-0 dark:prose-invert">
-          {children}
+        <div className="md:flex-1 prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto p-4 md:p-0 dark:prose-invert">
+          <WhileInView>{children}</WhileInView>
         </div>
       </div>
     </div>

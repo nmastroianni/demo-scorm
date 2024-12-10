@@ -8,14 +8,17 @@ import React, {
 
 interface CourseContextProps {
   currentLesson: number
+  currentSection: number
   lessonLength: number
   WindowRef: React.MutableRefObject<Window | null>
   setCurrentLesson: React.Dispatch<React.SetStateAction<number>>
+  setCurrentSection: React.Dispatch<React.SetStateAction<number>>
   setLessonLength: React.Dispatch<React.SetStateAction<number>>
 }
 const CourseContext = createContext<CourseContextProps | undefined>(undefined)
 const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentLesson, setCurrentLesson] = useState(0)
+  const [currentSection, setCurrentSection] = useState(0)
   const [lessonLength, setLessonLength] = useState(0)
   const WindowRef = useRef<Window | null>(null)
 
@@ -25,9 +28,11 @@ const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     <CourseContext.Provider
       value={{
         currentLesson,
+        currentSection,
         lessonLength,
         WindowRef,
         setCurrentLesson,
+        setCurrentSection,
         setLessonLength,
       }}
     >

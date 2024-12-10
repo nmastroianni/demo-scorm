@@ -9,7 +9,7 @@ function App(): JSX.Element {
   const { currentLesson } = useCourse()
 
   return (
-    <main className="bg-slate-200 dark:bg-slate-900 min-h-screen text-slate-50">
+    <main className="bg-slate-200 dark:bg-slate-900 min-h-screen dark:text-slate-50 text-slate-950 scroll-smooth">
       {/* <Lesson content={lessons[currentLesson]} /> */}
       <AnimatePresence mode="wait">
         {currentLesson === 0 && <Lesson0 key={1} />}

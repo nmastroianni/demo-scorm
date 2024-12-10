@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 
 interface WhileInViewProps {
-  children: JSX.Element
+  children: ReactNode
   direction?: 'left' | 'up' | 'right' | 'down' | 'none'
+  margin?: string
 }
 
 const WhileInView: React.FC<WhileInViewProps> = ({
   children,
   direction = 'none',
+  margin = '-20%',
 }) => {
   const shouldReduce = useReducedMotion()
   return (
@@ -25,7 +27,7 @@ const WhileInView: React.FC<WhileInViewProps> = ({
       initial={shouldReduce ? 'hidden' : direction}
       // transition={{ duration }}
       whileInView={'visible'}
-      viewport={{ margin: '-20%', once: true }}
+      viewport={{ margin: margin, once: true }}
     >
       {children}
     </motion.div>
