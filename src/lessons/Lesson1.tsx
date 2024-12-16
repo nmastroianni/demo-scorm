@@ -1,5 +1,6 @@
 // Lesson1.tsx
-import loon from '@/assets/loon.jpg'
+// @ts-expect-error img
+import loon from '@/assets/loon.jpg?format=avif'
 import Container from '@/components/Container'
 import LabeledImage from '@/components/LabeledImage'
 import NextLesson from '@/components/NextLesson'
