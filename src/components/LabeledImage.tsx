@@ -15,7 +15,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
   hotspots,
 }) => {
   return (
-    <div className="relative flex justify-center">
+    <div className="relative flex justify-center max-w-screen-md mx-auto">
       <div className="relative">
         <img
           src={imageUrl}

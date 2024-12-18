@@ -4,16 +4,25 @@ import React, { ReactNode } from 'react'
 interface ContainerProps {
   children: ReactNode
   width: '2xl' | 'xl' | 'lg' | 'md' | 'prose'
+  className?: string
 }
 
-const Container: React.FC<ContainerProps> = ({ children, width }) => {
+const Container: React.FC<ContainerProps> = ({
+  children,
+  className,
+  width,
+}) => {
   return (
     <div
-      className={cn('max-w-screen-lg  mx-auto ', {
-        'max-w-screen-2xl': width === '2xl',
-        'max-w-screen-xl': width === 'xl',
-        'max-w-screen-md': width === 'md',
-      })}
+      className={cn(
+        'max-w-screen-lg  mx-auto ',
+        {
+          'max-w-screen-2xl': width === '2xl',
+          'max-w-screen-xl': width === 'xl',
+          'max-w-screen-md': width === 'md',
+        },
+        className
+      )}
     >
       <span className="w-full" />
       <div
