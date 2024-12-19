@@ -1,6 +1,6 @@
 // Lesson1.tsx
-// @ts-expect-error img
-import loon from '@/assets/loon.jpg?format=avif'
+
+import loon from '@/assets/loon.jpg'
 import Container from '@/components/Container'
 import LabeledImage from '@/components/LabeledImage'
 import NextLesson from '@/components/NextLesson'
@@ -103,6 +103,14 @@ const Lesson1: React.FC = () => {
                 </p>
               </TextAside>
               <LabeledImage imageUrl={loon} hotspots={hotpsots} />
+            </Container>
+            <Container width="prose" className="pt-4">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eligendi rem nesciunt, pariatur consequatur cum reiciendis a
+                praesentium corrupti molestias consequuntur! Temporibus,
+                repudiandae quae rerum nisi obcaecati nostrum. Hic, ex mollitia.
+              </p>
               {currentSection === 0 && <NextSection />}
             </Container>
           </LessonSubSection>

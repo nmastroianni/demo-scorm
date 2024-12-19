@@ -4,7 +4,7 @@ import Lesson from '@/components/Lesson'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 // @ts-expect-error imagetools
-import loon from '@/assets/loon.jpg?format=avif&w=1920&h=1080'
+import loon from '@/assets/loon.jpg?w=1920&h=1080'
 import HeaderImage from '@/components/HeaderImage'
 
 const CourseOverview: React.FC = () => {

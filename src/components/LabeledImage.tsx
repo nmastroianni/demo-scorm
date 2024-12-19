@@ -56,6 +56,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
                       `text-4xl absolute animate-pulse rounded-full`
                     )}
                     style={{ top: hotspot.top, left: hotspot.left }}
+                    aria-label="click to view more information"
                   >
                     <MapPin
                       width={hotspot.size ? hotspot.size : 30}

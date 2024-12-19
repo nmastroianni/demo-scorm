@@ -8,6 +8,8 @@ interface TextAside {
 }
 const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
   const [open, setOpen] = useState(false)
+  if (altText === '')
+    altText = 'Alert! Alternative text is required for this image.'
   return (
     <div className="p-4">
       <div className="flex flex-wrap gap-x-4 items-center">
@@ -15,12 +17,17 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
           <WhileInView direction="right">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
-                <img
-                  src={imageUrl}
-                  alt={altText}
-                  className="rounded-lg shadow-md shadow-slate-900 cursor-zoom-in"
-                  title={altText}
-                />
+                <figure>
+                  <img
+                    src={imageUrl}
+                    alt=""
+                    className="rounded-lg shadow-md shadow-slate-900 cursor-zoom-in"
+                    title={altText}
+                  />
+                  <figcaption className="mt-4 pt-2 border-t border-slate-400/50">
+                    {altText}
+                  </figcaption>
+                </figure>
               </DialogTrigger>
               <DialogContent className="max-w-screen-lg p-8">
                 <img
@@ -36,7 +43,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
           </WhileInView>
         </div>
         <div className="md:flex-1 prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto p-4 md:p-0 dark:prose-invert">
-          <WhileInView>{children}</WhileInView>
+          <WhileInView direction="left">{children}</WhileInView>
         </div>
       </div>
     </div>
