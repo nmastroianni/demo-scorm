@@ -26,6 +26,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
         <motion.div
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={{
             visible: {
               opacity: 1,
@@ -47,6 +48,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
                   visible: { opacity: 1 },
                   hidden: { opacity: 0 },
                 }}
+                viewport={{ once: true }}
               >
                 <Popover>
                   <PopoverTrigger
