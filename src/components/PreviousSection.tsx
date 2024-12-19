@@ -11,7 +11,7 @@ const PreviousSection: React.FC<PreviousSectionProps> = ({
 }) => {
   const { currentSection, setCurrentSection } = useCourse()
   return (
-    <div className="my-4 lg:my-8 flex justify-center">
+    <div className="py-4 lg:py-8 flex justify-center">
       <WhileInView direction="down" margin="0%">
         <Button
           className="w-96"

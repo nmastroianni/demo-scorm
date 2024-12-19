@@ -12,14 +12,16 @@ import React from 'react'
 import LessonSubSection from '@/components/LessonSubSection'
 import { useCourse } from '@/components/CourseProvider'
 import NextSection from '@/components/NextSection'
-import PreviousSection from '@/components/PreviousSection'
+// import PreviousSection from '@/components/PreviousSection'
 import { AnimatePresence } from 'motion/react'
-import useScrollToTop from '@/hooks/useScrollToTop'
+// import useScrollToTop from '@/hooks/useScrollToTop'
 import CallOut from '@/components/CallOut'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
-  useScrollToTop(currentSection)
+  // set a const for the total number of sections in this lesson
+  const sectionCount = 3
+  // useScrollToTop(currentSection)
   const hotpsots: Array<Hotspot> = [
     {
       top: '25%',
@@ -48,10 +50,10 @@ const Lesson1: React.FC = () => {
   ]
   return (
     <Lesson>
-      <PreviousLesson text="Home" />
+      <PreviousLesson text="Main Menu" />
       <AnimatePresence mode="sync">
-        {currentSection === 0 && (
-          <LessonSubSection key={1}>
+        {currentSection >= 0 && (
+          <LessonSubSection id="section1" key={1}>
             <Container width="prose">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
@@ -64,6 +66,18 @@ const Lesson1: React.FC = () => {
                 dignissimos, sit maxime pariatur illum! Maxime, molestiae
                 maiores expedita officia tempore at neque. Consequuntur
                 voluptate corrupti quas odio ut assumenda nemo saepe?
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Debitis, quo error unde autem eum deserunt molestias? Debitis
+                numquam corporis sint illo, accusamus fugit consequuntur! Libero
+                voluptatem ullam repudiandae excepturi corporis.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem dolorum, porro labore ea, cum facilis non, animi
+                expedita sapiente dicta deleniti unde eaque similique ad
+                reiciendis aliquid totam asperiores vitae!
               </p>
             </Container>
             <Container width="xl">
@@ -89,14 +103,14 @@ const Lesson1: React.FC = () => {
                 </p>
               </TextAside>
               <LabeledImage imageUrl={loon} hotspots={hotpsots} />
-              <NextSection />
+              {currentSection === 0 && <NextSection />}
             </Container>
           </LessonSubSection>
         )}
-        {currentSection === 1 && (
-          <LessonSubSection key={2}>
+        {currentSection >= 1 && (
+          <LessonSubSection id="section2" key={2}>
             <Container width="prose">
-              <PreviousSection />
+              {/* <PreviousSection /> */}
               <CallOut>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -137,12 +151,79 @@ const Lesson1: React.FC = () => {
                   supports diverse learning needs.
                 </p>
               </TextAside>
+              {currentSection === 1 && <NextSection />}
+            </Container>
+          </LessonSubSection>
+        )}
+        {currentSection >= 2 && (
+          <LessonSubSection id="section3" key={3}>
+            <Container width="prose">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
+                rerum omnis quia nulla totam, dicta iste fuga earum? Nam minus
+                commodi odio repellat labore cumque molestias rerum. Reiciendis,
+                excepturi odio.
+              </p>
+              <p>
+                Et natus earum possimus a magnam aut magni saepe nisi, nobis
+                praesentium eius totam qui amet harum est officia rerum! Rem
+                alias aspernatur tempore quibusdam ipsam quidem provident fugit
+                sunt!
+              </p>
+              <p>
+                Nostrum tempora error corporis, voluptatem ut quam ad, delectus
+                facilis repudiandae ea cum deserunt ipsa dolore libero accusamus
+                ullam nulla at aperiam laboriosam! Iste eos rem voluptatem
+                aliquam eveniet facilis!
+              </p>
+              <p>
+                Ad, voluptas eaque aperiam debitis cum modi, architecto corrupti
+                earum facere fugiat libero temporibus incidunt. Eius at animi
+                modi doloribus cupiditate alias beatae velit quae. Perferendis
+                nesciunt doloremque minima quis?
+              </p>
+              <p>
+                Tempore doloremque accusantium ullam dolore commodi facilis vel,
+                obcaecati officia saepe officiis, recusandae fugit quidem quae
+                nobis harum quam iure exercitationem, distinctio animi aperiam.
+                Qui sit rerum placeat consequatur harum.
+              </p>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi
+                fugiat corporis exercitationem in quis facere, adipisci
+                doloribus animi dolorum voluptates tempora aut qui mollitia at.
+                Optio delectus voluptatem nostrum debitis.
+              </p>
+              <p>
+                Praesentium, modi et aperiam quia nostrum eum laborum, nesciunt
+                quo sapiente labore enim quae maiores mollitia iusto repellat!
+                Earum necessitatibus quo neque iusto. Aut delectus debitis ab,
+                quod quam consequatur!
+              </p>
+              <p>
+                Beatae nulla dolorum repellendus totam animi laboriosam,
+                inventore consectetur, impedit libero odio nam incidunt debitis
+                necessitatibus maxime exercitationem. Assumenda facere ipsa
+                deleniti minus fugit nostrum magni cum obcaecati. Deleniti, ex?
+              </p>
+              <p>
+                Pariatur itaque veniam totam voluptatum ad magnam aperiam beatae
+                iusto temporibus aliquam! Sint officia laudantium aut qui illum
+                reprehenderit maxime iste, porro dicta blanditiis, error soluta
+                sed accusantium voluptates sunt.
+              </p>
+              <p>
+                Excepturi recusandae nesciunt quam sapiente at, illo libero
+                cumque vitae doloremque quo consectetur eveniet est placeat
+                numquam eius neque amet blanditiis voluptate quas molestias,
+                quidem incidunt commodi provident labore! Optio.
+              </p>
             </Container>
           </LessonSubSection>
         )}
       </AnimatePresence>
 
-      <NextLesson />
+      {currentSection === sectionCount - 1 && <NextLesson />}
     </Lesson>
   )
 }

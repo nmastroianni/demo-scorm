@@ -9,8 +9,8 @@ interface NextSectionProps {
 const NextSection: React.FC<NextSectionProps> = ({ text = 'Continue' }) => {
   const { currentSection, setCurrentSection } = useCourse()
   return (
-    <div className="my-4 lg:my-8 flex justify-center">
-      <WhileInView direction="down" margin="-20%">
+    <div className="py-4 lg:py-8 flex justify-center">
+      <WhileInView direction="down" margin="-10%">
         <Button
           className="w-96"
           variant={'secondary'}

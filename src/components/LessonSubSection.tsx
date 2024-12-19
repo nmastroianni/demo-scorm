@@ -1,15 +1,29 @@
 import { motion } from 'motion/react'
-import React, { ReactNode } from 'react'
+import React, { HTMLAttributes, ReactNode, useEffect } from 'react'
 
-interface LessonSubSectionProps {
+interface LessonSubSectionProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
+  id: string
 }
-const LessonSubSection: React.FC<LessonSubSectionProps> = ({ children }) => {
+const LessonSubSection: React.FC<LessonSubSectionProps> = ({
+  children,
+  id,
+}) => {
+  useEffect(() => {
+    if (!id) return
+    console.log('id ---> ', id)
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [id])
   return (
     <motion.div
+      id={id}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.5 } }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
+      className="py-4 lg:py-8"
     >
       {children}
     </motion.div>
