@@ -136,19 +136,17 @@ const Lesson1: React.FC = () => {
             <Container width="xl">
               <TextAside imageUrl={loon} altText="">
                 <p>
-                  Welcome! XYZ College&apos;s fully online distance learning
-                  courses are designed to provide flexible, asynchronous
-                  learning experiences, meaning there are no real-time meetings
-                  to attend. These professionally crafted Master Courses are
-                  developed by a team of subject matter experts including course
-                  developers and reviewers, and instructional designers to
-                  ensure that all content is inclusive, engaging, and aligned
-                  with the Board of Trustees-approved curriculum.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Obcaecati natus ducimus itaque veniam consequuntur ipsum
+                  dolore repudiandae officiis quasi molestiae, maiores at vero
+                  quia voluptate sapiente optio consequatur, ipsa enim.
                 </p>
                 <p>
-                  Each course is built with the goal of delivering high-quality,
-                  student-centered learning that fosters academic success and
-                  supports diverse learning needs.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptatum, blanditiis necessitatibus modi soluta atque maxime
+                  deleniti est, accusamus aperiam rerum vero, quibusdam illum
+                  corporis! Eius voluptatem delectus perferendis voluptatum
+                  veniam!
                 </p>
               </TextAside>
               {currentSection === 1 && <NextSection />}
