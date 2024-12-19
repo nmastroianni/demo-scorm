@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 import { MapPin } from 'lucide-react'
 import React from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
+import { motion } from 'motion/react'
 
 interface LabledImageProps {
   imageUrl: string
@@ -21,23 +22,51 @@ const LabeledImage: React.FC<LabledImageProps> = ({
           alt={imageAlt}
           className="border-4 dark:border-slate-500"
         />
-        {hotspots.map((hotspot, index) => {
-          return (
-            <Popover key={index}>
-              <PopoverTrigger
-                className={cn(`animate-pulse text-4xl absolute`)}
-                style={{ top: hotspot.top, left: hotspot.left }}
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: { when: 'beforeChildren', staggerChildren: 0.3 },
+            },
+            hidden: {
+              opacity: 0,
+              transition: {
+                when: 'afterChildren',
+              },
+            },
+          }}
+        >
+          {hotspots.map((hotspot, index) => {
+            return (
+              <motion.div
+                key={index}
+                variants={{
+                  visible: { opacity: 1 },
+                  hidden: { opacity: 0 },
+                }}
               >
-                <MapPin
-                  width={hotspot.size ? hotspot.size : 30}
-                  height={hotspot.size ? hotspot.size : 30}
-                  color={hotspot.color ? hotspot.color : 'white'}
-                />
-              </PopoverTrigger>
-              <PopoverContent>{hotspot.content}</PopoverContent>
-            </Popover>
-          )
-        })}
+                <Popover>
+                  <PopoverTrigger
+                    className={cn(
+                      `text-4xl absolute animate-pulse rounded-full`
+                    )}
+                    style={{ top: hotspot.top, left: hotspot.left }}
+                  >
+                    <MapPin
+                      width={hotspot.size ? hotspot.size : 30}
+                      height={hotspot.size ? hotspot.size : 30}
+                      color={hotspot.color ? hotspot.color : 'white'}
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent>{hotspot.content}</PopoverContent>
+                </Popover>
+              </motion.div>
+            )
+          })}
+        </motion.div>
       </div>
     </div>
   )
