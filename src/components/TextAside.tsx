@@ -14,7 +14,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
     <div className="p-4">
       <div className="flex flex-wrap gap-x-4 items-center">
         <div className="md:flex-1 py-5">
-          <WhileInView direction="right">
+          <WhileInView direction="right" margin="-30%">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
                 <figure>
