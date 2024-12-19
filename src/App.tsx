@@ -3,6 +3,7 @@ import { useCourse } from './components/CourseProvider'
 import Lesson0 from './lessons/Lesson0'
 import Lesson1 from './lessons/Lesson1'
 import Lesson2 from './lessons/Lesson2'
+import { JSX } from 'react'
 
 function App(): JSX.Element {
   // Specify the type of SDRef: `Window | null`
