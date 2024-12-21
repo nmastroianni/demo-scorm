@@ -11,7 +11,6 @@ const LessonSubSection: React.FC<LessonSubSectionProps> = ({
 }) => {
   useEffect(() => {
     if (!id) return
-    console.log('id ---> ', id)
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })

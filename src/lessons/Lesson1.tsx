@@ -16,6 +16,8 @@ import NextSection from '@/components/NextSection'
 import { AnimatePresence } from 'motion/react'
 // import useScrollToTop from '@/hooks/useScrollToTop'
 import CallOut from '@/components/CallOut'
+import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
+import TrueOrFalse from '@/components/quiz/TrueOrFalse'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
@@ -112,6 +114,14 @@ const Lesson1: React.FC = () => {
                 repudiandae quae rerum nisi obcaecati nostrum. Hic, ex mollitia.
               </p>
               {currentSection === 0 && <NextSection />}
+            </Container>
+            <Container width="md">
+              <CheckForUnderstanding heading="Check for Understanding">
+                <TrueOrFalse
+                  answer={true}
+                  question="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+                />
+              </CheckForUnderstanding>
             </Container>
           </LessonSubSection>
         )}
