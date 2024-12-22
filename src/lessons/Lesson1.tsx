@@ -1,6 +1,6 @@
 // Lesson1.tsx
 
-import loon from '@/assets/loon.jpg'
+import loon from '@/assets/images/loon.jpg'
 import Container from '@/components/Container'
 import LabeledImage from '@/components/LabeledImage'
 import NextLesson from '@/components/NextLesson'
@@ -113,15 +113,19 @@ const Lesson1: React.FC = () => {
                 praesentium corrupti molestias consequuntur! Temporibus,
                 repudiandae quae rerum nisi obcaecati nostrum. Hic, ex mollitia.
               </p>
-              {currentSection === 0 && <NextSection />}
             </Container>
             <Container width="md">
               <CheckForUnderstanding heading="Check for Understanding">
                 <TrueOrFalse
                   answer={true}
-                  question="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+                  question="Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Eligendi rem nesciunt, pariatur consequatur cum reiciendis a
+                praesentium corrupti molestias consequuntur!"
+                  incorrectFeedback="Aliquid aspernatur blanditiis possimus eligendi? Error, qui
+                  explicabo labore."
                 />
               </CheckForUnderstanding>
+              {currentSection === 0 && <NextSection />}
             </Container>
           </LessonSubSection>
         )}
