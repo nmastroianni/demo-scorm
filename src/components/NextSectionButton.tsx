@@ -3,13 +3,15 @@ import { Button } from './ui/button'
 import { useCourse } from './CourseProvider'
 import WhileInView from './WhileInView'
 
-interface NextSectionProps {
+interface NextSectionButtonProps {
   text?: string
 }
-const NextSection: React.FC<NextSectionProps> = ({ text = 'Continue' }) => {
+const NextSectionButton: React.FC<NextSectionButtonProps> = ({
+  text = 'Continue',
+}) => {
   const { currentSection, setCurrentSection } = useCourse()
   return (
-    <div className="py-4 lg:py-8 flex justify-center">
+    <div className="flex justify-center py-4 lg:py-8">
       <WhileInView direction="down" margin="-10%">
         <Button
           className="w-96"
@@ -25,4 +27,4 @@ const NextSection: React.FC<NextSectionProps> = ({ text = 'Continue' }) => {
   )
 }
 
-export default NextSection
+export default NextSectionButton

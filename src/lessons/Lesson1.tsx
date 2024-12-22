@@ -3,19 +3,20 @@
 import loon from '@/assets/images/loon.jpg'
 import Container from '@/components/Container'
 import LabeledImage from '@/components/LabeledImage'
-import NextLesson from '@/components/NextLesson'
-import PreviousLesson from '@/components/PreviousLesson'
+import NextLessonButton from '@/components/NextLessonButton'
+import PreviousLessonButton from '@/components/PreviousLessonButton'
 import TextAside from '@/components/TextAside'
 import Lesson from '@/components/Lesson'
 import React from 'react'
-import LessonSubSection from '@/components/LessonSubSection'
+import LessonSection from '@/components/LessonSection'
 import { useCourse } from '@/components/CourseProvider'
-import NextSection from '@/components/NextSection'
+import NextSectionButton from '@/components/NextSectionButton'
 import { AnimatePresence } from 'motion/react'
 import CallOut from '@/components/CallOut'
 import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
-import TrueOrFalse from '@/components/quiz/TrueOrFalse'
+import TrueOrFalseQuestion from '@/components/quiz/TrueOrFalseQuestion'
 import { TrueOrFalseQuestions } from '@/lib/questions'
+import WhileInView from '@/components/WhileInView'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
@@ -50,13 +51,12 @@ const Lesson1: React.FC = () => {
   const [question1] = TrueOrFalseQuestions.filter(
     question => question.id === 'lesson1question1',
   )
-  console.log(question1)
   return (
     <Lesson>
-      <PreviousLesson text="Main Menu" />
+      <PreviousLessonButton text="Main Menu" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
-          <LessonSubSection id="section1" key={1}>
+          <LessonSection id="section1" key={1}>
             <Container width="prose">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
@@ -105,30 +105,35 @@ const Lesson1: React.FC = () => {
                   supports diverse learning needs.
                 </p>
               </TextAside>
-              <LabeledImage imageUrl={loon} hotspots={hotpsots} />
+              <WhileInView direction="up" margin="-30%">
+                <LabeledImage imageUrl={loon} hotspots={hotpsots} />
+              </WhileInView>
             </Container>
             <Container width="prose" className="pt-4">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi rem nesciunt, pariatur consequatur cum reiciendis a
-                praesentium corrupti molestias consequuntur! Temporibus,
-                repudiandae quae rerum nisi obcaecati nostrum. Hic, ex mollitia.
-              </p>
+              <WhileInView direction="up">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Eligendi rem nesciunt, pariatur consequatur cum reiciendis a
+                  praesentium corrupti molestias consequuntur! Temporibus,
+                  repudiandae quae rerum nisi obcaecati nostrum. Hic, ex
+                  mollitia.
+                </p>
+              </WhileInView>
             </Container>
             <Container width="md">
               <CheckForUnderstanding heading="Check for Understanding">
-                <TrueOrFalse
+                <TrueOrFalseQuestion
                   answer={question1.answer}
                   question={question1.question}
                   incorrectFeedback={question1.incorrectFeedback}
                 />
               </CheckForUnderstanding>
-              {currentSection === 0 && <NextSection />}
+              {currentSection === 0 && <NextSectionButton />}
             </Container>
-          </LessonSubSection>
+          </LessonSection>
         )}
         {currentSection >= 1 && (
-          <LessonSubSection id="section2" key={2}>
+          <LessonSection id="section2" key={2}>
             <Container width="prose">
               {/* <PreviousSection /> */}
               <CallOut>
@@ -169,12 +174,12 @@ const Lesson1: React.FC = () => {
                   veniam!
                 </p>
               </TextAside>
-              {currentSection === 1 && <NextSection />}
+              {currentSection === 1 && <NextSectionButton />}
             </Container>
-          </LessonSubSection>
+          </LessonSection>
         )}
         {currentSection >= 2 && (
-          <LessonSubSection id="section3" key={3}>
+          <LessonSection id="section3" key={3}>
             <Container width="prose">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
@@ -237,11 +242,11 @@ const Lesson1: React.FC = () => {
                 quidem incidunt commodi provident labore! Optio.
               </p>
             </Container>
-          </LessonSubSection>
+          </LessonSection>
         )}
       </AnimatePresence>
 
-      {currentSection === sectionCount - 1 && <NextLesson />}
+      {currentSection === sectionCount - 1 && <NextLessonButton />}
     </Lesson>
   )
 }

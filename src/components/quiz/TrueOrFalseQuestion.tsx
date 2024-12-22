@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 
-interface TrueOrFalseProps {
+interface TrueOrFalseQuestionProps {
   /**
    * question: Enter the true or false question text.
    */
@@ -37,7 +37,7 @@ interface FormData {
  * @param {string} [incorrectFeedback] optionally provide feedback for incorrect responses
  * @returns {FC} A React functional component
  */
-const TrueOrFalse: FC<TrueOrFalseProps> = ({
+const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({
   answer,
   question,
   correctFeedback,
@@ -176,4 +176,4 @@ const TrueOrFalse: FC<TrueOrFalseProps> = ({
   )
 }
 
-export default TrueOrFalse
+export default TrueOrFalseQuestion

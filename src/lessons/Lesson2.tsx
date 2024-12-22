@@ -2,9 +2,9 @@
 import Container from '@/components/Container'
 import { useCourse } from '@/components/CourseProvider'
 import Lesson from '@/components/Lesson'
-import LessonSubSection from '@/components/LessonSubSection'
-import NextLesson from '@/components/NextLesson'
-import PreviousLesson from '@/components/PreviousLesson'
+import LessonSubSection from '@/components/LessonSection'
+import NextLesson from '@/components/NextLessonButton'
+import PreviousLesson from '@/components/PreviousLessonButton'
 import { AnimatePresence } from 'motion/react'
 import React from 'react'
 

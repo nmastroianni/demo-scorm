@@ -2,16 +2,16 @@ import { LucideArrowUp } from 'lucide-react'
 import { useCourse } from './CourseProvider'
 import React from 'react'
 
-type PreviousLessonProps = {
+type PreviousLessonButtonProps = {
   text?: string
 }
-const PreviousLesson: React.FC<PreviousLessonProps> = ({
+const PreviousLessonButton: React.FC<PreviousLessonButtonProps> = ({
   text = 'Go Back',
 }) => {
   const { currentLesson, setCurrentLesson, setCurrentSection } = useCourse()
 
   return (
-    <div className="bg-slate-950 text-slate-200 text-2xl text-center hover:bg-slate-900 transition-colors duration-300 ease-in mb-4 lg:mb-8">
+    <div className="mb-4 bg-slate-950 text-center text-2xl text-slate-200 transition-colors duration-300 ease-in hover:bg-slate-900 lg:mb-8">
       <button
         onClick={() => {
           setCurrentLesson(currentLesson - 1)
@@ -27,4 +27,4 @@ const PreviousLesson: React.FC<PreviousLessonProps> = ({
   )
 }
 
-export default PreviousLesson
+export default PreviousLessonButton
