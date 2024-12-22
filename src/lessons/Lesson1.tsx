@@ -15,8 +15,14 @@ import { AnimatePresence } from 'motion/react'
 import CallOut from '@/components/CallOut'
 import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
 import TrueOrFalseQuestion from '@/components/quiz/TrueOrFalseQuestion'
-import { TrueOrFalseQuestions } from '@/lib/questions'
+import {
+  MultipleChoiceQuestions,
+  MultipleSelectQuestions,
+  TrueOrFalseQuestions,
+} from '@/lib/questions'
 import WhileInView from '@/components/WhileInView'
+import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestion'
+import MultipleSelectQuestion from '@/components/quiz/MultipleSelectQuestion'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
@@ -50,6 +56,12 @@ const Lesson1: React.FC = () => {
   ]
   const [question1] = TrueOrFalseQuestions.filter(
     question => question.id === 'lesson1question1',
+  )
+  const [question2] = MultipleChoiceQuestions.filter(
+    question => question.id === 'lesson1question2',
+  )
+  const [question3] = MultipleSelectQuestions.filter(
+    question => question.id === 'lesson1question3',
   )
   return (
     <Lesson>
@@ -122,11 +134,7 @@ const Lesson1: React.FC = () => {
             </Container>
             <Container width="md">
               <CheckForUnderstanding heading="Check for Understanding">
-                <TrueOrFalseQuestion
-                  answer={question1.answer}
-                  question={question1.question}
-                  incorrectFeedback={question1.incorrectFeedback}
-                />
+                <TrueOrFalseQuestion question={question1} />
               </CheckForUnderstanding>
               {currentSection === 0 && <NextSectionButton />}
             </Container>
@@ -174,6 +182,9 @@ const Lesson1: React.FC = () => {
                   veniam!
                 </p>
               </TextAside>
+              <CheckForUnderstanding>
+                <MultipleChoiceQuestion question={question2} />
+              </CheckForUnderstanding>
               {currentSection === 1 && <NextSectionButton />}
             </Container>
           </LessonSection>
@@ -241,6 +252,9 @@ const Lesson1: React.FC = () => {
                 numquam eius neque amet blanditiis voluptate quas molestias,
                 quidem incidunt commodi provident labore! Optio.
               </p>
+              <CheckForUnderstanding>
+                <MultipleSelectQuestion question={question3} />
+              </CheckForUnderstanding>
             </Container>
           </LessonSection>
         )}

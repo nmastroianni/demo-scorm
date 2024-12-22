@@ -27,3 +27,13 @@ export const MultipleChoiceQuestions: MultipleChoiceQuestion[] = [
     answer: 0,
   },
 ]
+
+export const MultipleSelectQuestions: MultipleSelectQuestion[] = [
+  {
+    id: 'lesson1question3',
+    type: 'MultipleSelect',
+    question: 'Select all of the lorem text',
+    options: ['lorem', 'ipsum', 'sit', 'dog'],
+    answer: [0, 1, 2],
+  },
+]

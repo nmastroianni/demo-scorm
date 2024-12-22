@@ -71,6 +71,16 @@ interface MultipleChoiceQuestion {
   incorrectFeedback?: string
 }
 
+interface MultipleSelectQuestion {
+  id: string
+  type: 'MultipleSelect'
+  question: string
+  options: string[]
+  answer: number[]
+  correctFeedback?: string
+  incorrectFeedback?: string
+}
+
 type HTMLColor =
   | 'aliceblue'
   | 'antiquewhite'

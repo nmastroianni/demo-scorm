@@ -8,21 +8,7 @@ interface TrueOrFalseQuestionProps {
   /**
    * question: Enter the true or false question text.
    */
-  question: string
-  /**
-   * answer: Which is the correct answer? true or false
-   */
-  answer: boolean
-  /**
-   * correctFeedback: what the student sees when they answer correctly
-   * default is: Correct!
-   */
-  correctFeedback?: string
-  /**
-   * incorrectFeedback: what the student sees when they answer incorrectly
-   * default is: Incorrect. Try again?
-   */
-  incorrectFeedback?: string
+  question: TrueOrFalseQuestion
 }
 
 // Define the type for your form data
@@ -31,22 +17,14 @@ interface FormData {
 }
 /**
  * A functional component that renders a true or false question form.
- * @param {boolean} [answer] input the correct answer true or false
- * @param {string} [question] provide the question text
- * @param {string} [correctFeedback] optionally provide feedback for correct responses
- * @param {string} [incorrectFeedback] optionally provide feedback for incorrect responses
+ * @param {TrueOrFalseQuestion} [question] provide the question object
  * @returns {FC} A React functional component
  */
-const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({
-  answer,
-  question,
-  correctFeedback,
-  incorrectFeedback,
-}) => {
+const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
-  const stringAnswer = answer.toString()
+  const stringAnswer = question.answer.toString()
 
   // Function to handle input changes
 
@@ -79,7 +57,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({
       <form onSubmit={handleSubmit} onReset={handleReset}>
         <fieldset className="flex flex-col border p-4">
           <legend className="border bg-slate-200 p-2 lg:p-4 dark:bg-slate-950">
-            {question}
+            {question.question}
           </legend>
           <div className="grid gap-y-4 font-semibold">
             <label
@@ -132,8 +110,8 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({
               <>
                 <CircleX width={40} height={40} />
                 <span>
-                  {incorrectFeedback
-                    ? incorrectFeedback
+                  {question.incorrectFeedback
+                    ? question.incorrectFeedback
                     : `Incorrect. Try again?`}
                 </span>
               </>
@@ -141,7 +119,11 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({
             {correct === true && (
               <>
                 <PartyPopper width={40} height={40} className="shrink-0" />
-                <span>{correctFeedback ? correctFeedback : 'Correct!'}</span>
+                <span>
+                  {question.correctFeedback
+                    ? question.correctFeedback
+                    : 'Correct!'}
+                </span>
               </>
             )}
           </div>
