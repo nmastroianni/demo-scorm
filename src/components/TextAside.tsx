@@ -9,11 +9,11 @@ interface TextAside {
 const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
   const [open, setOpen] = useState(false)
   if (altText === '')
-    altText = 'Alert! Alternative text is required for this image.'
+    altText = '🚨 Alert! Alternative text is required for this image. 🚨'
   return (
     <div className="p-4">
-      <div className="flex flex-wrap gap-x-4 items-center">
-        <div className="md:flex-1 py-5">
+      <div className="flex flex-wrap items-center gap-x-4">
+        <div className="py-5 md:flex-1">
           <WhileInView direction="right" margin="-30%">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
@@ -21,10 +21,10 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
                   <img
                     src={imageUrl}
                     alt=""
-                    className="rounded-lg shadow-md shadow-slate-900 cursor-zoom-in"
+                    className="cursor-zoom-in rounded-lg shadow-md shadow-slate-900"
                     title={altText}
                   />
-                  <figcaption className="mt-4 pt-2 border-t border-slate-400/50">
+                  <figcaption className="mt-4 border-t border-slate-400/50 pt-2">
                     {altText}
                   </figcaption>
                 </figure>
@@ -33,7 +33,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
                 <img
                   src={imageUrl}
                   alt={altText}
-                  className="rounded-lg shadow shadow-slate-600 w-full cursor-zoom-out"
+                  className="w-full cursor-zoom-out rounded-lg shadow shadow-slate-600"
                   onClick={() => {
                     setOpen(false)
                   }}
@@ -42,7 +42,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
             </Dialog>
           </WhileInView>
         </div>
-        <div className="md:flex-1 prose lg:prose-lg xl:prose-xl 2xl:prose-2xl mx-auto p-4 md:p-0 dark:prose-invert">
+        <div className="prose mx-auto p-4 lg:prose-lg xl:prose-xl 2xl:prose-2xl dark:prose-invert md:flex-1 md:p-0">
           <WhileInView direction="left">{children}</WhileInView>
         </div>
       </div>

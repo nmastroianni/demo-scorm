@@ -9,6 +9,68 @@ interface Window {
   RecordFillInInteraction: () => void
 }
 
+/**
+ * This type provides data to the LabeledImage component
+ */
+interface Hotspot {
+  /**
+   * How far from the top should this label appear?
+   * This is typically expressed as a percentage like "33%"
+   */
+  top: string
+  /**
+   * How far from the left edge should this label appear?
+   * This is typically expressed as a percentage like "25%"
+   */
+  left: string
+  /**
+   * How large should the label be in pixels?
+   * Enter a number as a value like 50.
+   */
+  size?: number
+  /**
+   * What color should the label be? Consider a color that will provide sufficient contrast.
+   * You can use HTML color names.
+   */
+  color?: HTMLColor
+  /**
+   * Enter HTML that you wish to appear when the label is clicked.
+   */
+  content: ReactNode
+}
+
+interface TrueOrFalseQuestion {
+  /**
+   * id should be a string of text that you use to identify your question
+   * exampe:
+   * ```typescript
+   * id: 'lesson1question1'
+   * ```
+   */
+  id: string
+  /**
+   * type can only be one string value: TrueOrFalse
+   * ```typescript
+   * type: 'TrueOrFalse'
+   * ```
+   */
+  type: 'TrueOrFalse'
+  question: string
+  answer: boolean
+  correctFeedback?: string
+  incorrectFeedback?: string
+}
+
+interface MultipleChoiceQuestion {
+  id: string
+  type: 'MultipleChoice'
+  question: string
+  options: string[]
+  answer: number
+  correctFeedback?: string
+  incorrectFeedback?: string
+}
+
 type HTMLColor =
   | 'aliceblue'
   | 'antiquewhite'
@@ -163,11 +225,3 @@ type HTMLColor =
   | `rgba(${number},${number},${number},${number})`
   | `hsl(${number},${number}%,${number}%)`
   | `hsla(${number},${number}%,${number}%,${number})`
-
-interface Hotspot {
-  top: string
-  left: string
-  size?: number
-  color?: HTMLColor
-  content: ReactNode
-}

@@ -6,24 +6,21 @@ import LabeledImage from '@/components/LabeledImage'
 import NextLesson from '@/components/NextLesson'
 import PreviousLesson from '@/components/PreviousLesson'
 import TextAside from '@/components/TextAside'
-
 import Lesson from '@/components/Lesson'
 import React from 'react'
 import LessonSubSection from '@/components/LessonSubSection'
 import { useCourse } from '@/components/CourseProvider'
 import NextSection from '@/components/NextSection'
-// import PreviousSection from '@/components/PreviousSection'
 import { AnimatePresence } from 'motion/react'
-// import useScrollToTop from '@/hooks/useScrollToTop'
 import CallOut from '@/components/CallOut'
 import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
 import TrueOrFalse from '@/components/quiz/TrueOrFalse'
+import { TrueOrFalseQuestions } from '@/lib/questions'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
   // set a const for the total number of sections in this lesson
   const sectionCount = 3
-  // useScrollToTop(currentSection)
   const hotpsots: Array<Hotspot> = [
     {
       top: '25%',
@@ -50,6 +47,10 @@ const Lesson1: React.FC = () => {
       ),
     },
   ]
+  const [question1] = TrueOrFalseQuestions.filter(
+    question => question.id === 'lesson1question1',
+  )
+  console.log(question1)
   return (
     <Lesson>
       <PreviousLesson text="Main Menu" />
@@ -117,12 +118,9 @@ const Lesson1: React.FC = () => {
             <Container width="md">
               <CheckForUnderstanding heading="Check for Understanding">
                 <TrueOrFalse
-                  answer={true}
-                  question="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi rem nesciunt, pariatur consequatur cum reiciendis a
-                praesentium corrupti molestias consequuntur!"
-                  incorrectFeedback="Aliquid aspernatur blanditiis possimus eligendi? Error, qui
-                  explicabo labore."
+                  answer={question1.answer}
+                  question={question1.question}
+                  incorrectFeedback={question1.incorrectFeedback}
                 />
               </CheckForUnderstanding>
               {currentSection === 0 && <NextSection />}
