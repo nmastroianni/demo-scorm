@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
@@ -27,6 +27,12 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
   const stringAnswer = question.answer.toString()
+  const feedbackRef = useRef<HTMLSpanElement>(null)
+  const questionRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (feedbackRef.current) feedbackRef.current.focus()
+  }, [correct])
 
   // Function to handle input changes
 
@@ -39,11 +45,9 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
     e.preventDefault()
     setSubmitted(true)
     if (formData.studentAnswer === stringAnswer) {
-      console.log('studentAnswer === stringAnswer')
       setCorrect(true)
       setSectionPassed(true)
     } else {
-      console.log('studenAnswer !== stringAnswer')
       setCorrect(false)
     }
   }
@@ -54,13 +58,16 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
     setSubmitted(false)
     setCorrect(null)
     setFormData({ studentAnswer: null })
+    if (questionRef.current) questionRef.current.focus()
   }
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <fieldset className="flex flex-col border p-4">
-          <legend className="border bg-slate-200 p-2 lg:p-4 dark:bg-slate-950">
-            {question.question}
+        <fieldset className="flex flex-col border p-4 dark:border-slate-200">
+          <legend className="border bg-slate-200 p-2 lg:p-4 dark:border-slate-200 dark:bg-slate-950">
+            <span tabIndex={-1} ref={questionRef}>
+              {question.question}
+            </span>
           </legend>
           <div className="grid gap-y-4 font-semibold">
             <label
@@ -112,7 +119,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
             {correct === false && (
               <>
                 <CircleX width={40} height={40} />
-                <span>
+                <span ref={feedbackRef} tabIndex={-1}>
                   {question.incorrectFeedback
                     ? question.incorrectFeedback
                     : `Incorrect. Try again?`}
@@ -122,7 +129,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
             {correct === true && (
               <>
                 <PartyPopper width={40} height={40} className="shrink-0" />
-                <span>
+                <span ref={feedbackRef} tabIndex={-1}>
                   {question.correctFeedback
                     ? question.correctFeedback
                     : 'Correct!'}
@@ -136,7 +143,6 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
             {correct !== false && submitted === false && (
               <Button
                 variant={'default'}
-                // disabled={submitted}
                 className={cn({ 'bg-slate-500 text-slate-900': submitted })}
                 type="submit"
               >

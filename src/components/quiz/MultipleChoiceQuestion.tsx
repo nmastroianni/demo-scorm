@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
 import { useCourse } from '../CourseProvider'
 
@@ -21,6 +21,15 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
+  const feedbackRef = useRef<HTMLSpanElement>(null)
+  const questionRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    console.log('correct value modified')
+    if (feedbackRef.current) {
+      feedbackRef.current.focus()
+    }
+  }, [correct])
 
   // Function to handle input changes
 
@@ -46,14 +55,21 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
     setSubmitted(false)
     setCorrect(null)
     setFormData({ studentAnswer: null })
+    if (questionRef.current) questionRef.current.focus()
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <fieldset className="flex flex-col border p-4">
-          <legend className="border bg-slate-200 p-2 lg:p-4 dark:bg-slate-950">
-            {question.question}
+        <fieldset className="flex flex-col border p-4 dark:border-slate-200">
+          <legend className="border bg-slate-200 p-2 lg:p-4 dark:border-slate-200 dark:bg-slate-950">
+            <span
+              ref={questionRef}
+              tabIndex={0}
+              className="ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
+            >
+              {question.question}
+            </span>
           </legend>
           <div className="grid gap-y-4 font-semibold">
             {question.options.map((option, index) => {
@@ -70,6 +86,7 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
                   )}
                 >
                   <input
+                    tabIndex={0}
                     id={`mc-option-${index}`}
                     type="radio"
                     name={question.id}
@@ -87,7 +104,7 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
             {correct === false && (
               <>
                 <CircleX width={40} height={40} />
-                <span>
+                <span ref={feedbackRef} tabIndex={-1}>
                   {question.incorrectFeedback
                     ? question.incorrectFeedback
                     : `Incorrect. Try again?`}
@@ -97,7 +114,7 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
             {correct === true && (
               <>
                 <PartyPopper width={40} height={40} className="shrink-0" />
-                <span>
+                <span ref={feedbackRef} tabIndex={-1}>
                   {question.correctFeedback
                     ? question.correctFeedback
                     : 'Correct!'}
@@ -124,6 +141,7 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
                 initial={{ opacity: 0, y: 75 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 75 }}
+                className="rounded-full ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
               >
                 <Undo width={40} height={40} />
                 <p className="text-center text-sm">Retry</p>

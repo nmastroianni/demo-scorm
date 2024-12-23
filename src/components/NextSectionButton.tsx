@@ -18,8 +18,7 @@ const NextSectionButton: React.FC<NextSectionButtonProps> = ({
       {(contingent === false || sectionPassed) && (
         <WhileInView direction="up" margin="0%">
           <Button
-            className="w-96"
-            variant={'secondary'}
+            className="w-96 ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
             onClick={() => {
               setCurrentSection(currentSection + 1)
               setSectionPassed(false)

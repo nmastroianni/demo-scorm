@@ -16,7 +16,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
         <div className="py-5 md:flex-1">
           <WhileInView direction="right" margin="-30%">
             <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger>
+              <DialogTrigger className="rounded-lg focus:outline-none focus:ring-4 focus-visible:ring-ring">
                 <figure>
                   <img
                     src={imageUrl}

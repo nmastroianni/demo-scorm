@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
 import { useCourse } from '../CourseProvider'
 
@@ -21,6 +21,15 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
   const [formData, setFormData] = useState<FormData>({ [question.id]: [] })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
+
+  const feedbackRef = useRef<HTMLSpanElement>(null)
+  const questionRef = useRef<HTMLSpanElement>(null)
+
+  useEffect(() => {
+    if (feedbackRef.current) {
+      feedbackRef.current.focus()
+    }
+  }, [correct])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = event.target
@@ -42,6 +51,9 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
       ) && formData[question.id].length === question.answer.length
     setCorrect(isCorrect)
     setSectionPassed(isCorrect)
+    if (feedbackRef.current && !isCorrect) {
+      feedbackRef.current.focus()
+    }
   }
 
   const handleReset = (e: FormEvent<HTMLFormElement>) => {
@@ -51,6 +63,7 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
     setCorrect(null)
     setFormData({ [question.id]: [] })
     setSectionPassed(false)
+    if (questionRef.current) questionRef.current.focus()
   }
 
   return (
@@ -58,7 +71,9 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
       <form onSubmit={handleSubmit} onReset={handleReset}>
         <fieldset className="flex flex-col border p-4">
           <legend className="border bg-slate-200 p-2 lg:p-4 dark:bg-slate-950">
-            {question.question}
+            <span tabIndex={0} ref={questionRef}>
+              {question.question}
+            </span>
           </legend>
           <div className="grid gap-y-4 font-semibold">
             {question.options.map((option, index) => {
@@ -92,7 +107,11 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
             {correct === false && (
               <>
                 <CircleX width={40} height={40} />
-                <span>
+                <span
+                  ref={feedbackRef}
+                  tabIndex={-1}
+                  className="ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
+                >
                   {question.incorrectFeedback
                     ? question.incorrectFeedback
                     : `Incorrect. Try again?`}
@@ -102,7 +121,7 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
             {correct === true && (
               <>
                 <PartyPopper width={40} height={40} className="shrink-0" />
-                <span>
+                <span ref={feedbackRef} tabIndex={-1}>
                   {question.correctFeedback
                     ? question.correctFeedback
                     : 'Correct!'}
@@ -129,6 +148,7 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
                 initial={{ opacity: 0, y: 75 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 75 }}
+                className="rounded-full ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
               >
                 <Undo width={40} height={40} />
                 <p className="text-center text-sm">Retry</p>

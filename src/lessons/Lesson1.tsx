@@ -98,14 +98,15 @@ const Lesson1: React.FC = () => {
             <Container width="xl">
               <TextAside
                 imageUrl={loon}
-                altText="A common loon with water dropping of its bill."
+                altText="A common loon with water dropping off its bill."
               >
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Laudantium in ab ex, deserunt earum eveniet corporis quis
                   mollitia! Distinctio ea recusandae consequuntur assumenda,
                   temporibus delectus alias doloremque! Quae, autem fugit.
-                  <br />
+                </p>
+                <p>
                   Fugit sunt neque odit sint vel quis. Incidunt excepturi magnam
                   ipsam molestias et cupiditate, officiis consequatur reiciendis
                   minus accusamus voluptatibus sequi sapiente, voluptate beatae
