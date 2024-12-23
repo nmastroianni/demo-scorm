@@ -10,16 +10,19 @@ interface CourseContextProps {
   currentLesson: number
   currentSection: number
   lessonLength: number
-  WindowRef: React.MutableRefObject<Window | null>
+  sectionPassed: boolean
+  WindowRef: React.RefObject<Window | null>
   setCurrentLesson: React.Dispatch<React.SetStateAction<number>>
   setCurrentSection: React.Dispatch<React.SetStateAction<number>>
   setLessonLength: React.Dispatch<React.SetStateAction<number>>
+  setSectionPassed: React.Dispatch<React.SetStateAction<boolean>>
 }
 const CourseContext = createContext<CourseContextProps | undefined>(undefined)
 const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentLesson, setCurrentLesson] = useState(0)
   const [currentSection, setCurrentSection] = useState(0)
   const [lessonLength, setLessonLength] = useState(0)
+  const [sectionPassed, setSectionPassed] = useState(false)
   const WindowRef = useRef<Window | null>(null)
 
   WindowRef.current = window.parent
@@ -30,10 +33,12 @@ const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         currentLesson,
         currentSection,
         lessonLength,
+        sectionPassed,
         WindowRef,
         setCurrentLesson,
         setCurrentSection,
         setLessonLength,
+        setSectionPassed,
       }}
     >
       {children}

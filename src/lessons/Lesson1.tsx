@@ -143,7 +143,6 @@ const Lesson1: React.FC = () => {
         {currentSection >= 1 && (
           <LessonSection id="section2" key={2}>
             <Container width="prose">
-              {/* <PreviousSection /> */}
               <CallOut>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -185,7 +184,7 @@ const Lesson1: React.FC = () => {
               <CheckForUnderstanding>
                 <MultipleChoiceQuestion question={question2} />
               </CheckForUnderstanding>
-              {currentSection === 1 && <NextSectionButton />}
+              {currentSection === 1 && <NextSectionButton contingent />}
             </Container>
           </LessonSection>
         )}
@@ -260,7 +259,7 @@ const Lesson1: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {currentSection === sectionCount - 1 && <NextLessonButton />}
+      {currentSection === sectionCount - 1 && <NextLessonButton contingent />}
     </Lesson>
   )
 }

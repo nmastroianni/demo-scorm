@@ -3,6 +3,7 @@ import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useCourse } from '../CourseProvider'
 
 interface TrueOrFalseQuestionProps {
   /**
@@ -21,6 +22,7 @@ interface FormData {
  * @returns {FC} A React functional component
  */
 const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
+  const { setSectionPassed } = useCourse()
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
@@ -39,6 +41,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
     if (formData.studentAnswer === stringAnswer) {
       console.log('studentAnswer === stringAnswer')
       setCorrect(true)
+      setSectionPassed(true)
     } else {
       console.log('studenAnswer !== stringAnswer')
       setCorrect(false)

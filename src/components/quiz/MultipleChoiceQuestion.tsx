@@ -3,6 +3,7 @@ import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { FC, FormEvent, useState } from 'react'
 import { Button } from '../ui/button'
+import { useCourse } from '../CourseProvider'
 
 interface MultipleChoiceQuestionProps {
   question: MultipleChoiceQuestion
@@ -16,6 +17,7 @@ interface FormData {
 const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
   question,
 }) => {
+  const { setSectionPassed } = useCourse()
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
@@ -32,6 +34,7 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
     setSubmitted(true)
     if (formData.studentAnswer === question.options[question.answer]) {
       setCorrect(true)
+      setSectionPassed(true)
     } else {
       setCorrect(false)
     }

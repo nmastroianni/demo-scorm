@@ -5,24 +5,30 @@ import WhileInView from './WhileInView'
 
 interface NextSectionButtonProps {
   text?: string
+  contingent?: boolean
 }
 const NextSectionButton: React.FC<NextSectionButtonProps> = ({
   text = 'Continue',
+  contingent = false,
 }) => {
-  const { currentSection, setCurrentSection } = useCourse()
+  const { currentSection, setCurrentSection, sectionPassed, setSectionPassed } =
+    useCourse()
   return (
-    <div className="flex justify-center py-4 lg:py-8">
-      <WhileInView direction="down" margin="-10%">
-        <Button
-          className="w-96"
-          variant={'secondary'}
-          onClick={() => {
-            setCurrentSection(currentSection + 1)
-          }}
-        >
-          {text}
-        </Button>
-      </WhileInView>
+    <div className="flex justify-center py-4 lg:py-12">
+      {(contingent === false || sectionPassed) && (
+        <WhileInView direction="up" margin="0%">
+          <Button
+            className="w-96"
+            variant={'secondary'}
+            onClick={() => {
+              setCurrentSection(currentSection + 1)
+              setSectionPassed(false)
+            }}
+          >
+            {text}
+          </Button>
+        </WhileInView>
+      )}
     </div>
   )
 }
