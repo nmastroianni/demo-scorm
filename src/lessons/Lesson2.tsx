@@ -3,6 +3,8 @@ import Container from '@/components/Container'
 import { useCourse } from '@/components/CourseProvider'
 import Lesson from '@/components/Lesson'
 import LessonSubSection from '@/components/LessonSection'
+import List from '@/components/List'
+import ListItem from '@/components/ListItem'
 import NextLesson from '@/components/NextLessonButton'
 import PreviousLesson from '@/components/PreviousLessonButton'
 import { AnimatePresence } from 'motion/react'
@@ -18,6 +20,10 @@ const Lesson2: React.FC = () => {
         {currentSection >= 0 && (
           <LessonSubSection id="section1">
             <Container width="prose">
+              <List type="unordered">
+                <ListItem>Item 1</ListItem>
+                <ListItem>Item 2</ListItem>
+              </List>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Accusamus quisquam voluptatem at est quae assumenda sapiente.
