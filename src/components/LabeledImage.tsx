@@ -15,7 +15,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
   hotspots,
 }) => {
   return (
-    <div className="relative flex justify-center max-w-screen-md mx-auto">
+    <div className="relative mx-auto flex max-w-screen-md justify-center">
       <div className="relative">
         <img
           src={imageUrl}
@@ -53,9 +53,13 @@ const LabeledImage: React.FC<LabledImageProps> = ({
                 <Popover>
                   <PopoverTrigger
                     className={cn(
-                      `text-4xl absolute animate-pulse rounded-full`
+                      `absolute animate-pulse rounded-full border p-2 text-4xl`,
                     )}
-                    style={{ top: hotspot.top, left: hotspot.left }}
+                    style={{
+                      top: hotspot.top,
+                      left: hotspot.left,
+                      borderColor: hotspot.color,
+                    }}
                     aria-label="click to view more information"
                   >
                     <MapPin
