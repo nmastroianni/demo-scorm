@@ -69,8 +69,8 @@ const MultipleSelectQuestion: FC<MultipleSelectQuestionProps> = ({
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <fieldset className="flex flex-col border p-4">
-          <legend className="border bg-slate-200 p-2 lg:p-4 dark:bg-slate-950">
+        <fieldset className="flex flex-col rounded border p-4 dark:border-slate-200">
+          <legend className="rounded border bg-slate-200 p-2 dark:border-slate-200 dark:bg-slate-950 lg:p-4">
             <span tabIndex={0} ref={questionRef}>
               {question.question}
             </span>

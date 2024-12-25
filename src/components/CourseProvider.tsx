@@ -2,6 +2,7 @@ import React, {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -24,6 +25,20 @@ const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [lessonLength, setLessonLength] = useState(0)
   const [sectionPassed, setSectionPassed] = useState(false)
   const WindowRef = useRef<Window | null>(null)
+  useEffect(() => {
+    const localLesson = Number(localStorage.getItem('lessonProgress'))
+    const localSection = Number(localStorage.getItem('sectionProgress'))
+    if (localLesson) {
+      setCurrentLesson(localLesson)
+    } else {
+      setCurrentLesson(0)
+    }
+    if (localSection) {
+      setCurrentSection(localSection)
+    } else {
+      setCurrentSection(0)
+    }
+  }, [])
 
   WindowRef.current = window.parent
 

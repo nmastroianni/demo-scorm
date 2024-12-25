@@ -19,6 +19,8 @@ const NextLessonButton: React.FC<NextLessonButtonProps> = ({
         <button
           onClick={() => {
             setCurrentLesson(currentLesson + 1)
+            localStorage.setItem('lessonProgress', `${currentLesson + 1}`)
+            localStorage.setItem('sectionProgress', '0')
             setCurrentSection(0)
           }}
           className="w-full p-4 lg:p-8"

@@ -25,7 +25,6 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
   const questionRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    console.log('correct value modified')
     if (feedbackRef.current) {
       feedbackRef.current.focus()
     }
@@ -61,8 +60,8 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
   return (
     <div>
       <form onSubmit={handleSubmit} onReset={handleReset}>
-        <fieldset className="flex flex-col border p-4 dark:border-slate-200">
-          <legend className="border bg-slate-200 p-2 lg:p-4 dark:border-slate-200 dark:bg-slate-950">
+        <fieldset className="flex flex-col rounded border p-4 dark:border-slate-200">
+          <legend className="rounded border bg-slate-200 p-2 dark:border-slate-200 dark:bg-slate-950 lg:p-4">
             <span
               ref={questionRef}
               tabIndex={0}

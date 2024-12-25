@@ -21,6 +21,7 @@ const NextSectionButton: React.FC<NextSectionButtonProps> = ({
             className="w-96 ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
             onClick={() => {
               setCurrentSection(currentSection + 1)
+              localStorage.setItem('sectionProgress', `${currentSection + 1}`)
               setSectionPassed(false)
             }}
           >
