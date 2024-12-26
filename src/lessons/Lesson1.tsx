@@ -23,6 +23,7 @@ import {
 import WhileInView from '@/components/WhileInView'
 import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestion'
 import MultipleSelectQuestion from '@/components/quiz/MultipleSelectQuestion'
+import type { Hotspot } from '@/types/global'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()

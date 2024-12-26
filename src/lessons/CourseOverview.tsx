@@ -13,7 +13,7 @@ const CourseOverview: React.FC = () => {
   return (
     <>
       <Lesson>
-        <HeaderImage image={loon} altText="" heading="This is the h1 text." />
+        <HeaderImage image={loon} altText="" heading="This is an h1 element." />
         <div className="flex justify-center py-4 lg:py-8">
           <Button
             onClick={() => {
@@ -27,6 +27,10 @@ const CourseOverview: React.FC = () => {
           </Button>
         </div>
         <Container width="prose">
+          <h2>
+            This is an h2 element because it is a child of the h1 one ☝️ in the
+            HeaderImage component.
+          </h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
             nulla? Harum, soluta numquam. Necessitatibus veniam ab nostrum autem

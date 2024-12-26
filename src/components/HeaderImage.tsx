@@ -29,15 +29,15 @@ const HeaderImage: FC<HeaderImageProps> = ({
 }) => {
   if (altText === '') altText = 'decorative image'
   return (
-    <header className="relative flex justify-center items-center mb-4 lg:mb-8 p-4 lg:p-8 h-72">
+    <header className="relative mb-4 flex h-72 items-center justify-center p-4 lg:mb-8 lg:p-8">
       <img
         src={image}
         alt={altText}
-        className="absolute inset-0 object-cover w-full h-72"
+        className="absolute inset-0 h-72 w-full object-cover"
       />
-      <div className="md:max-w-screen-md max-w-screen-lg z-10 p-4 lg:p-8 bg-slate-200/80 text-slate-800 dark:bg-slate-800/80 dark:text-slate-200 backdrop-blur-sm rounded-lg">
+      <div className="z-10 max-w-screen-lg rounded-lg bg-slate-200/80 p-4 text-slate-800 backdrop-blur-sm dark:bg-slate-800/80 dark:text-slate-200 md:max-w-screen-md lg:p-8">
         <h1
-          className="font-black text-2xl md:text-3xl lg:text-5xl text-center"
+          className="text-center text-2xl font-black md:text-3xl lg:text-6xl"
           style={{ lineHeight: 1.3 }}
         >
           {heading}

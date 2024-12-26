@@ -58,7 +58,7 @@ const LabeledImage: React.FC<LabledImageProps> = ({
                     style={{
                       top: hotspot.top,
                       left: hotspot.left,
-                      borderColor: hotspot.color,
+                      borderColor: hotspot.color ? hotspot.color : 'white',
                     }}
                     aria-label="click to view more information"
                   >

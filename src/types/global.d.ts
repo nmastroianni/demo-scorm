@@ -1,5 +1,7 @@
 // src/global.d.ts
 
+import { ReactNode } from 'react'
+
 interface Window {
   GetStatus: () => void
   SetFailed: () => void
@@ -37,6 +39,20 @@ interface Hotspot {
    * Enter HTML that you wish to appear when the label is clicked.
    */
   content: ReactNode
+}
+
+interface AccordionBlockItem {
+  value: string
+  trigger: string
+  content: ReactNode
+}
+
+interface TabBlockItem {
+  trigger: string
+  description?: ReactNode
+  content: ReactNode
+  contentTitle?: string
+  footer?: ReactNode
 }
 
 interface TrueOrFalseQuestion {

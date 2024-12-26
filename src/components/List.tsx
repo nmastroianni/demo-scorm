@@ -15,12 +15,21 @@ const List: FC<ListProps> = ({ children, type = 'unordered' }) => {
   }
   if (type === 'ordered') {
     return (
-      <motion.ol initial="hidden" whileInView="visible" variants={list}>
+      <motion.ol
+        initial="hidden"
+        whileInView="visible"
+        variants={list}
+        viewport={{ margin: '-20%' }}
+      >
         {children}
       </motion.ol>
     )
   } else {
-    return <motion.ul>{children}</motion.ul>
+    return (
+      <motion.ul initial="hidden" whileInView="visible" variants={list}>
+        {children}
+      </motion.ul>
+    )
   }
 }
 
