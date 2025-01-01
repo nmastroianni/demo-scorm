@@ -4,8 +4,13 @@ import { FC, ReactNode } from 'react'
 interface ListProps {
   type?: 'ordered' | 'unordered'
   children: ReactNode
+  animate?: boolean
 }
-const List: FC<ListProps> = ({ children, type = 'unordered' }) => {
+const List: FC<ListProps> = ({
+  animate = true,
+  children,
+  type = 'unordered',
+}) => {
   const list = {
     visible: {
       opacity: 1,
@@ -16,17 +21,22 @@ const List: FC<ListProps> = ({ children, type = 'unordered' }) => {
   if (type === 'ordered') {
     return (
       <motion.ol
-        initial="hidden"
+        initial={animate ? 'hidden' : 'visible'}
         whileInView="visible"
         variants={list}
-        viewport={{ margin: '-20%' }}
+        viewport={{ margin: '-20%', once: true }}
       >
         {children}
       </motion.ol>
     )
   } else {
     return (
-      <motion.ul initial="hidden" whileInView="visible" variants={list}>
+      <motion.ul
+        initial={animate ? 'hidden' : 'visible'}
+        whileInView="visible"
+        variants={list}
+        viewport={{ margin: '-10%', once: true }}
+      >
         {children}
       </motion.ul>
     )

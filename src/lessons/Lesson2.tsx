@@ -96,7 +96,7 @@ const Lesson2: React.FC = () => {
                 deleniti iusto modi eius magnam possimus dicta error ipsam. Eius
                 esse facilis tempore.
               </p>
-              <List>
+              <List animate={false}>
                 <ListItem>Did</ListItem>
                 <ListItem>You</ListItem>
                 <ListItem>Know</ListItem>

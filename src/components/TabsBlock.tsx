@@ -1,7 +1,7 @@
 import { TabBlockItem } from '@/types/global'
 import { FC } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
-import { sluggify } from '@/lib/utils'
+import { cn, sluggify } from '@/lib/utils'
 
 import {
   Card,
@@ -14,6 +14,7 @@ import {
 
 interface TabsBlockProps {
   data: TabBlockItem[]
+  width?: 'sm' | 'md'
 }
 
 /**
@@ -21,9 +22,14 @@ interface TabsBlockProps {
  * @param {TabBlockProps} [data] Provide the component an array of TabBlockItem(s)
  * @returns a React functional component based on [ShadCN UI](https://ui.shadcn.com/docs/components/tabs)
  */
-const TabsBlock: FC<TabsBlockProps> = ({ data }) => {
+const TabsBlock: FC<TabsBlockProps> = ({ data, width = 'sm' }) => {
   return (
-    <div className="mx-auto flex max-w-screen-sm items-start justify-center p-4 lg:p-8">
+    <div
+      className={cn(
+        'mx-auto flex max-w-screen-sm items-start justify-center p-4 lg:p-8',
+        { 'max-w-screen-md': width === 'md' },
+      )}
+    >
       <Tabs defaultValue={sluggify(data[0].trigger)}>
         <TabsList
           className="grid w-full"
@@ -44,7 +50,7 @@ const TabsBlock: FC<TabsBlockProps> = ({ data }) => {
           const slug = sluggify(item.trigger)
           return (
             <TabsContent key={`content-${slug}`} value={slug}>
-              <Card>
+              <Card className="dark:bg-slate-800">
                 <CardHeader>
                   {item.contentTitle && (
                     <CardTitle>{item.contentTitle}</CardTitle>
