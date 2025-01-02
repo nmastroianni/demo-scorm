@@ -47,6 +47,11 @@ interface AccordionBlockItem {
   content: ReactNode
 }
 
+interface CarouselImageItem {
+  image: string
+  alt: string
+}
+
 interface TabBlockItem {
   trigger: string
   description?: ReactNode

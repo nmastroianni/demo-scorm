@@ -10,10 +10,26 @@ import AudioBlock from '@/components/AudioBlock'
 // @ts-expect-error imagetools
 import loon from '@/assets/images/loon.jpg?w=1920&h=1080'
 import apollo11 from '@/assets/audio/Armstrong_Small_Step.ogg'
+import CarouselBlock from '@/components/CarouselBlock'
+import { CarouselImageItem } from '@/types/global'
 
 const CourseOverview: React.FC = () => {
   const { currentLesson, setCurrentLesson } = useCourse()
 
+  const carouselItems: CarouselImageItem[] = [
+    {
+      image: loon,
+      alt: 'A common loon',
+    },
+    {
+      image: loon,
+      alt: 'The same common loon',
+    },
+    {
+      image: loon,
+      alt: 'The same common loon',
+    },
+  ]
   return (
     <>
       <Lesson>
@@ -48,11 +64,16 @@ const CourseOverview: React.FC = () => {
           iste cumque, cum fuga quibusdam eveniet eaque! Ipsam modi cupiditate
           quasi odio sunt.&rdquo;
         </BlockQuote>
-        <YouTubeBlock url="https://youtube.com/shorts/pFuFVZU3NB0?si=2J_BuhjHVs5eULGA" />
-        <AudioBlock
-          audioFile={apollo11}
-          transcript="Lorem ipsum odor amet, consectetuer adipiscing elit. Tempor augue integer pharetra morbi nisi taciti. Mollis fusce semper vehicula potenti ligula feugiat aptent. Ut adipiscing vivamus lectus fusce aptent himenaeos. Dictum aliquam inceptos quisque penatibus natoque ex nisi dictumst. Ad odio pulvinar gravida ipsum diam posuere convallis hac. Mauris quisque et scelerisque senectus quisque hendrerit inceptos dis. Eros posuere litora at ad etiam nunc; at donec. Metus faucibus porttitor mi justo id nibh varius. Ultricies pulvinar morbi leo nostra pharetra. Senectus senectus pharetra urna; eros himenaeos molestie. Posuere nullam nunc aptent magnis suscipit aliquet lacus. Pharetra metus libero felis congue; molestie mauris duis quam. Auctor eget netus eget proin cubilia lobortis. Congue magna proin dictumst massa; himenaeos augue habitant massa luctus."
-        />
+        <Container width="2xl">
+          <YouTubeBlock url="https://www.youtube.com/watch?v=SZN6esypwcA" />
+        </Container>
+        <Container width="md">
+          <AudioBlock
+            audioFile={apollo11}
+            transcript="Lorem ipsum odor amet, consectetuer adipiscing elit. Tempor augue integer pharetra morbi nisi taciti. Mollis fusce semper vehicula potenti ligula feugiat aptent. Ut adipiscing vivamus lectus fusce aptent himenaeos. Dictum aliquam inceptos quisque penatibus natoque ex nisi dictumst. Ad odio pulvinar gravida ipsum diam posuere convallis hac. Mauris quisque et scelerisque senectus quisque hendrerit inceptos dis. Eros posuere litora at ad etiam nunc; at donec. Metus faucibus porttitor mi justo id nibh varius. Ultricies pulvinar morbi leo nostra pharetra. Senectus senectus pharetra urna; eros himenaeos molestie. Posuere nullam nunc aptent magnis suscipit aliquet lacus. Pharetra metus libero felis congue; molestie mauris duis quam. Auctor eget netus eget proin cubilia lobortis. Congue magna proin dictumst massa; himenaeos augue habitant massa luctus."
+          />
+          <CarouselBlock images={carouselItems} />
+        </Container>
       </Lesson>
     </>
   )

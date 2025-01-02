@@ -9,7 +9,7 @@ const YouTubeBlock: FC<YouTubeBlockProps> = ({ url }) => {
 
   return (
     <div
-      className={cn('mx-auto max-w-screen-md py-4 lg:py-8', {
+      className={cn('mx-auto py-4 lg:py-8', {
         'max-w-sm': video?.shorts,
       })}
     >

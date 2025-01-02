@@ -19,8 +19,8 @@ interface AudioBlockProps {
 const AudioBlock: FC<AudioBlockProps> = ({ audioFile, transcript }) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   return (
-    <div className="mx-auto flex max-w-screen-md flex-col items-center justify-center py-4 lg:py-8">
-      <audio ref={audioRef} src={audioFile} controls></audio>
+    <div className="flex flex-col items-center justify-center space-y-4 py-4 lg:space-y-8 lg:py-8">
+      <audio ref={audioRef} src={audioFile} controls className="w-full"></audio>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value={audioFile}>
           <AccordionTrigger>Audio Transcript</AccordionTrigger>
