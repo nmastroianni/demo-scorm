@@ -5,7 +5,7 @@ import ContainerBlock from '@/components/ContainerBlock'
 import LabeledImageBlock from '@/components/LabeledImageBlock'
 import NextLessonButton from '@/components/NextLessonButton'
 import PreviousLessonButton from '@/components/PreviousLessonButton'
-import TextAside from '@/components/TextAside'
+import TextAsideBlock from '@/components/TextAsideBlock'
 import LessonBlock from '@/components/LessonBlock'
 import React from 'react'
 import { useCourse } from '@/components/CourseProvider'
@@ -97,7 +97,7 @@ const Lesson1: React.FC = () => {
               </p>
             </ContainerBlock>
             <ContainerBlock width="xl">
-              <TextAside
+              <TextAsideBlock
                 imageUrl={loon}
                 altText="A common loon with water dropping off its bill."
               >
@@ -118,7 +118,7 @@ const Lesson1: React.FC = () => {
                   student-centered learning that fosters academic success and
                   supports diverse learning needs.
                 </p>
-              </TextAside>
+              </TextAsideBlock>
               <WhileInView direction="up" margin="-30%">
                 <LabeledImageBlock imageUrl={loon} hotspots={hotpsots} />
               </WhileInView>
@@ -168,7 +168,7 @@ const Lesson1: React.FC = () => {
               </p>
             </ContainerBlock>
             <ContainerBlock width="xl">
-              <TextAside imageUrl={loon} altText="">
+              <TextAsideBlock imageUrl={loon} altText="">
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Obcaecati natus ducimus itaque veniam consequuntur ipsum
@@ -182,7 +182,7 @@ const Lesson1: React.FC = () => {
                   corporis! Eius voluptatem delectus perferendis voluptatum
                   veniam!
                 </p>
-              </TextAside>
+              </TextAsideBlock>
               <CheckForUnderstanding>
                 <MultipleChoiceQuestion question={question2} />
               </CheckForUnderstanding>

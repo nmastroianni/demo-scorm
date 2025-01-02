@@ -6,7 +6,7 @@ interface ListProps {
   children: ReactNode
   animate?: boolean
 }
-const List: FC<ListProps> = ({
+const ListBlock: FC<ListProps> = ({
   animate = true,
   children,
   type = 'unordered',
@@ -43,4 +43,4 @@ const List: FC<ListProps> = ({
   }
 }
 
-export default List
+export default ListBlock

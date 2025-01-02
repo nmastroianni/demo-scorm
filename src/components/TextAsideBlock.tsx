@@ -6,7 +6,11 @@ interface TextAside {
   children: ReactNode
   imageUrl: string
 }
-const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
+const TextAsideBlock: React.FC<TextAside> = ({
+  altText,
+  children,
+  imageUrl,
+}) => {
   const [open, setOpen] = useState(false)
   if (altText === '')
     altText = '🚨 Alert! Alternative text is required for this image. 🚨'
@@ -42,7 +46,7 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
             </Dialog>
           </WhileInView>
         </div>
-        <div className="prose mx-auto p-4 lg:prose-lg xl:prose-xl 2xl:prose-2xl dark:prose-invert md:flex-1 md:p-0">
+        <div className="prose mx-auto p-4 dark:prose-invert lg:prose-lg xl:prose-xl 2xl:prose-2xl md:flex-1 md:p-0">
           <WhileInView direction="left">{children}</WhileInView>
         </div>
       </div>
@@ -50,4 +54,4 @@ const TextAside: React.FC<TextAside> = ({ altText, children, imageUrl }) => {
   )
 }
 
-export default TextAside
+export default TextAsideBlock

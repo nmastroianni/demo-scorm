@@ -3,7 +3,7 @@ import AccordionBlock from '@/components/AccordionBlock'
 import ContainerBlock from '@/components/ContainerBlock'
 import { useCourse } from '@/components/CourseProvider'
 import LessonBlock from '@/components/LessonBlock'
-import List from '@/components/List'
+import ListBlock from '@/components/ListBlock'
 import ListItem from '@/components/ListItem'
 import NextLesson from '@/components/NextLessonButton'
 import PreviousLesson from '@/components/PreviousLessonButton'
@@ -68,10 +68,10 @@ const Lesson2: React.FC = () => {
         {currentSection >= 0 && (
           <LessonSectionBlock id="section2-1">
             <ContainerBlock width="prose">
-              <List type="unordered">
+              <ListBlock type="unordered">
                 <ListItem>Item 1</ListItem>
                 <ListItem>Item 2</ListItem>
-              </List>
+              </ListBlock>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Accusamus quisquam voluptatem at est quae assumenda sapiente.
@@ -96,13 +96,13 @@ const Lesson2: React.FC = () => {
                 deleniti iusto modi eius magnam possimus dicta error ipsam. Eius
                 esse facilis tempore.
               </p>
-              <List animate={false}>
+              <ListBlock animate={false}>
                 <ListItem>Did</ListItem>
                 <ListItem>You</ListItem>
                 <ListItem>Know</ListItem>
                 <ListItem>That</ListItem>
                 <ListItem>This Is Powered By React?</ListItem>
-              </List>
+              </ListBlock>
             </ContainerBlock>
             <TabsBlock data={tabsData} />
             <AccordionBlock data={accordionData} />
