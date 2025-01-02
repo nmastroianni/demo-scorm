@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { FC, FormEvent, useEffect, useRef, useState } from 'react'
 import { Button } from '../ui/button'
 import { useCourse } from '../CourseProvider'
+import { type MultipleSelectQuestion } from '@/types/global'
 
 interface MultipleSelectQuestionProps {
   question: MultipleSelectQuestion

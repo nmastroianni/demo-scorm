@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useCourse } from '../CourseProvider'
+import { type TrueOrFalseQuestion } from '@/types/global'
 
 interface TrueOrFalseQuestionProps {
   /**

@@ -1,3 +1,5 @@
+import { TrueOrFalseQuestion, MultipleChoiceQuestion, MultipleSelectQuestion } from '@/types/global'
+
 /**
  * questions is an array of objects.
  * import this array into a LessonSection

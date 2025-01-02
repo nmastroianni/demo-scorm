@@ -3,6 +3,7 @@ import { MapPin } from 'lucide-react'
 import React from 'react'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import { motion } from 'motion/react'
+import { Hotspot } from '@/types/global'
 
 interface LabledImageProps {
   imageUrl: string

@@ -1,4 +1,4 @@
-// Lesson1.tsx
+// Lesson2.tsx
 import AccordionBlock from '@/components/AccordionBlock'
 import Container from '@/components/Container'
 import { useCourse } from '@/components/CourseProvider'
