@@ -2,11 +2,14 @@ import Container from '@/components/Container'
 import { useCourse } from '@/components/CourseProvider'
 import Lesson from '@/components/Lesson'
 import { Button } from '@/components/ui/button'
-// @ts-expect-error imagetools
-import loon from '@/assets/images/loon.jpg?w=1920&h=1080'
 import HeaderImage from '@/components/HeaderImage'
 import BlockQuote from '@/components/BlockQuote'
 import YouTubeBlock from '@/components/YouTubeBlock'
+import AudioBlock from '@/components/AudioBlock'
+//import assets
+// @ts-expect-error imagetools
+import loon from '@/assets/images/loon.jpg?w=1920&h=1080'
+import apollo11 from '@/assets/audio/Armstrong_Small_Step.ogg'
 
 const CourseOverview: React.FC = () => {
   const { currentLesson, setCurrentLesson } = useCourse()
@@ -29,7 +32,7 @@ const CourseOverview: React.FC = () => {
         </div>
         <Container width="prose">
           <h2>
-            This is an h2 element because it is a child of the h1 one ☝️ in the
+            This is an h2 element because it is a child of the h1 ☝️ in the
             HeaderImage component.
           </h2>
           <p>
@@ -45,10 +48,8 @@ const CourseOverview: React.FC = () => {
           iste cumque, cum fuga quibusdam eveniet eaque! Ipsam modi cupiditate
           quasi odio sunt.&rdquo;
         </BlockQuote>
-        <YouTubeBlock
-          style="vertical"
-          url="https://www.youtube.com/watch?v=8AxJOYHHtzw"
-        />
+        <YouTubeBlock url="https://youtube.com/shorts/pFuFVZU3NB0?si=2J_BuhjHVs5eULGA" />
+        <AudioBlock audioFile={apollo11} />
       </Lesson>
     </>
   )
