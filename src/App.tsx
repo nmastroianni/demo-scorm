@@ -4,7 +4,7 @@ import CourseOverview from './lessons/CourseOverview'
 import Lesson1 from './lessons/Lesson1'
 import Lesson2 from './lessons/Lesson2'
 import { JSX, useEffect } from 'react'
-import Container from './components/Container'
+import Container from './components/ContainerBlock'
 import { Button } from './components/ui/button'
 
 function App(): JSX.Element {

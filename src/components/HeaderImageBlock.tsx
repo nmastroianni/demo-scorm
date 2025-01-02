@@ -22,7 +22,7 @@ interface HeaderImageProps {
 const defaultHeading =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
 
-const HeaderImage: FC<HeaderImageProps> = ({
+const HeaderImageBlock: FC<HeaderImageProps> = ({
   image,
   altText,
   heading = defaultHeading,
@@ -47,4 +47,4 @@ const HeaderImage: FC<HeaderImageProps> = ({
   )
 }
 
-export default HeaderImage
+export default HeaderImageBlock

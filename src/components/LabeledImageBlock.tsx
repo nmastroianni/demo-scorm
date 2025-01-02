@@ -10,7 +10,7 @@ interface LabledImageProps {
   imageAlt?: string
   hotspots: Hotspot[]
 }
-const LabeledImage: React.FC<LabledImageProps> = ({
+const LabeledImageBlock: React.FC<LabledImageProps> = ({
   imageAlt = 'decorative image',
   imageUrl,
   hotspots,
@@ -80,4 +80,4 @@ const LabeledImage: React.FC<LabledImageProps> = ({
   )
 }
 
-export default LabeledImage
+export default LabeledImageBlock

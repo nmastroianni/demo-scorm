@@ -1,9 +1,8 @@
 // Lesson2.tsx
 import AccordionBlock from '@/components/AccordionBlock'
-import Container from '@/components/Container'
+import ContainerBlock from '@/components/ContainerBlock'
 import { useCourse } from '@/components/CourseProvider'
-import Lesson from '@/components/Lesson'
-import LessonSubSection from '@/components/LessonSection'
+import LessonBlock from '@/components/LessonBlock'
 import List from '@/components/List'
 import ListItem from '@/components/ListItem'
 import NextLesson from '@/components/NextLessonButton'
@@ -13,6 +12,7 @@ import { AccordionBlockItem, TabBlockItem } from '@/types/global'
 import { AnimatePresence } from 'motion/react'
 import React from 'react'
 import loon from '@/assets/images/loon.jpg'
+import LessonSectionBlock from '@/components/LessonSectionBlock'
 
 const Lesson2: React.FC = () => {
   const { currentSection } = useCourse()
@@ -62,12 +62,12 @@ const Lesson2: React.FC = () => {
     },
   ]
   return (
-    <Lesson>
+    <LessonBlock>
       <PreviousLesson text="Go Back to Lesson 1" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
-          <LessonSubSection id="section2-1">
-            <Container width="prose">
+          <LessonSectionBlock id="section2-1">
+            <ContainerBlock width="prose">
               <List type="unordered">
                 <ListItem>Item 1</ListItem>
                 <ListItem>Item 2</ListItem>
@@ -103,16 +103,16 @@ const Lesson2: React.FC = () => {
                 <ListItem>That</ListItem>
                 <ListItem>This Is Powered By React?</ListItem>
               </List>
-            </Container>
+            </ContainerBlock>
             <TabsBlock data={tabsData} />
             <AccordionBlock data={accordionData} />
-          </LessonSubSection>
+          </LessonSectionBlock>
         )}
       </AnimatePresence>
       {currentSection === sectionCount - 1 && (
         <NextLesson text="Proceed to the next lesson" />
       )}
-    </Lesson>
+    </LessonBlock>
   )
 }
 

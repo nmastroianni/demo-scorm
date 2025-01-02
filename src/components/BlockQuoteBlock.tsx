@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import Container from './Container'
+import Container from './ContainerBlock'
 
 interface BlockQuoteProps {
   children: ReactNode
@@ -7,7 +7,11 @@ interface BlockQuoteProps {
   citation?: string
 }
 
-const BlockQuote: FC<BlockQuoteProps> = ({ author, children, citation }) => {
+const BlockQuoteBlock: FC<BlockQuoteProps> = ({
+  author,
+  children,
+  citation,
+}) => {
   return (
     <Container
       width="md"
@@ -33,4 +37,4 @@ const BlockQuote: FC<BlockQuoteProps> = ({ author, children, citation }) => {
   )
 }
 
-export default BlockQuote
+export default BlockQuoteBlock

@@ -5,7 +5,7 @@ interface LessonProps {
   children: React.ReactNode
 }
 
-const Lesson: React.FC<LessonProps> = ({ children }) => {
+const LessonBlock: React.FC<LessonProps> = ({ children }) => {
   return (
     <motion.section exit={{ opacity: 0, transition: { duration: 0.5 } }}>
       {children}
@@ -13,4 +13,4 @@ const Lesson: React.FC<LessonProps> = ({ children }) => {
   )
 }
 
-export default Lesson
+export default LessonBlock

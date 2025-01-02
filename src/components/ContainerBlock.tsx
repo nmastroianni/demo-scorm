@@ -7,7 +7,7 @@ interface ContainerProps {
   className?: string
 }
 
-const Container: React.FC<ContainerProps> = ({
+const ContainerBlock: React.FC<ContainerProps> = ({
   children,
   className,
   width,
@@ -37,4 +37,4 @@ const Container: React.FC<ContainerProps> = ({
   )
 }
 
-export default Container
+export default ContainerBlock

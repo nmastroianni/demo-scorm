@@ -5,7 +5,10 @@ interface LessonSubSectionProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
   id: string
 }
-const LessonSection: React.FC<LessonSubSectionProps> = ({ children, id }) => {
+const LessonSectionBlock: React.FC<LessonSubSectionProps> = ({
+  children,
+  id,
+}) => {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!id) return
@@ -30,4 +33,4 @@ const LessonSection: React.FC<LessonSubSectionProps> = ({ children, id }) => {
   )
 }
 
-export default LessonSection
+export default LessonSectionBlock

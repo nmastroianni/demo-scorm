@@ -1,18 +1,17 @@
 // Lesson1.tsx
 
 import loon from '@/assets/images/loon.jpg'
-import Container from '@/components/Container'
-import LabeledImage from '@/components/LabeledImage'
+import ContainerBlock from '@/components/ContainerBlock'
+import LabeledImageBlock from '@/components/LabeledImageBlock'
 import NextLessonButton from '@/components/NextLessonButton'
 import PreviousLessonButton from '@/components/PreviousLessonButton'
 import TextAside from '@/components/TextAside'
-import Lesson from '@/components/Lesson'
+import LessonBlock from '@/components/LessonBlock'
 import React from 'react'
-import LessonSection from '@/components/LessonSection'
 import { useCourse } from '@/components/CourseProvider'
 import NextSectionButton from '@/components/NextSectionButton'
 import { AnimatePresence } from 'motion/react'
-import CallOut from '@/components/CallOut'
+import CallOutBlock from '@/components/CallOutBlock'
 import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
 import TrueOrFalseQuestion from '@/components/quiz/TrueOrFalseQuestion'
 import {
@@ -24,6 +23,7 @@ import WhileInView from '@/components/WhileInView'
 import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestion'
 import MultipleSelectQuestion from '@/components/quiz/MultipleSelectQuestion'
 import type { Hotspot } from '@/types/global'
+import LessonSectionBlock from '@/components/LessonSectionBlock'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
@@ -65,12 +65,12 @@ const Lesson1: React.FC = () => {
     question => question.id === 'lesson1question3',
   )
   return (
-    <Lesson>
+    <LessonBlock>
       <PreviousLessonButton text="Main Menu" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
-          <LessonSection id="section1" key={1}>
-            <Container width="prose">
+          <LessonSectionBlock id="section1" key={1}>
+            <ContainerBlock width="prose">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
                 fugit expedita iste fuga mollitia ex at obcaecati culpa omnis
@@ -95,8 +95,8 @@ const Lesson1: React.FC = () => {
                 expedita sapiente dicta deleniti unde eaque similique ad
                 reiciendis aliquid totam asperiores vitae!
               </p>
-            </Container>
-            <Container width="xl">
+            </ContainerBlock>
+            <ContainerBlock width="xl">
               <TextAside
                 imageUrl={loon}
                 altText="A common loon with water dropping off its bill."
@@ -120,10 +120,10 @@ const Lesson1: React.FC = () => {
                 </p>
               </TextAside>
               <WhileInView direction="up" margin="-30%">
-                <LabeledImage imageUrl={loon} hotspots={hotpsots} />
+                <LabeledImageBlock imageUrl={loon} hotspots={hotpsots} />
               </WhileInView>
-            </Container>
-            <Container width="prose" className="pt-4">
+            </ContainerBlock>
+            <ContainerBlock width="prose" className="pt-4">
               <WhileInView direction="up">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -133,19 +133,19 @@ const Lesson1: React.FC = () => {
                   mollitia.
                 </p>
               </WhileInView>
-            </Container>
-            <Container width="md">
+            </ContainerBlock>
+            <ContainerBlock width="md">
               <CheckForUnderstanding heading="Check for Understanding">
                 <TrueOrFalseQuestion question={question1} />
               </CheckForUnderstanding>
               {currentSection === 0 && <NextSectionButton />}
-            </Container>
-          </LessonSection>
+            </ContainerBlock>
+          </LessonSectionBlock>
         )}
         {currentSection >= 1 && (
-          <LessonSection id="section2" key={2}>
-            <Container width="prose">
-              <CallOut>
+          <LessonSectionBlock id="section2" key={2}>
+            <ContainerBlock width="prose">
+              <CallOutBlock>
                 <p>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                   Aliquid aspernatur blanditiis possimus eligendi? Error, qui
@@ -153,7 +153,7 @@ const Lesson1: React.FC = () => {
                   consequuntur nulla, aliquam accusantium? Excepturi, nesciunt
                   culpa!
                 </p>
-              </CallOut>
+              </CallOutBlock>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
                 illo quis reprehenderit facere. Veritatis, necessitatibus! Magni
@@ -166,8 +166,8 @@ const Lesson1: React.FC = () => {
                 quae dolore laborum suscipit earum vero ad nulla aspernatur hic?
                 Dolorum!
               </p>
-            </Container>
-            <Container width="xl">
+            </ContainerBlock>
+            <ContainerBlock width="xl">
               <TextAside imageUrl={loon} altText="">
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -187,12 +187,12 @@ const Lesson1: React.FC = () => {
                 <MultipleChoiceQuestion question={question2} />
               </CheckForUnderstanding>
               {currentSection === 1 && <NextSectionButton contingent />}
-            </Container>
-          </LessonSection>
+            </ContainerBlock>
+          </LessonSectionBlock>
         )}
         {currentSection >= 2 && (
-          <LessonSection id="section3" key={3}>
-            <Container width="prose">
+          <LessonSectionBlock id="section3" key={3}>
+            <ContainerBlock width="prose">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam
                 rerum omnis quia nulla totam, dicta iste fuga earum? Nam minus
@@ -256,13 +256,13 @@ const Lesson1: React.FC = () => {
               <CheckForUnderstanding>
                 <MultipleSelectQuestion question={question3} />
               </CheckForUnderstanding>
-            </Container>
-          </LessonSection>
+            </ContainerBlock>
+          </LessonSectionBlock>
         )}
       </AnimatePresence>
 
       {currentSection === sectionCount - 1 && <NextLessonButton contingent />}
-    </Lesson>
+    </LessonBlock>
   )
 }
 
