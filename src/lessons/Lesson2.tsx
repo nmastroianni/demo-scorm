@@ -66,7 +66,7 @@ const Lesson2: React.FC = () => {
       <PreviousLesson text="Go Back to Lesson 1" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
-          <LessonSubSection id="section1">
+          <LessonSubSection id="section2-1">
             <Container width="prose">
               <List type="unordered">
                 <ListItem>Item 1</ListItem>

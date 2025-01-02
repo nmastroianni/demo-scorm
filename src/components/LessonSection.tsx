@@ -12,7 +12,7 @@ const LessonSection: React.FC<LessonSubSectionProps> = ({ children, id }) => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      if (ref.current) ref.current.focus()
+      // if (ref.current) ref.current.focus()
     }
   }, [id])
   return (

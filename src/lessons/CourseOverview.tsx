@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import loon from '@/assets/images/loon.jpg?w=1920&h=1080'
 import HeaderImage from '@/components/HeaderImage'
 import BlockQuote from '@/components/BlockQuote'
+import YouTubeBlock from '@/components/YouTubeBlock'
 
 const CourseOverview: React.FC = () => {
   const { currentLesson, setCurrentLesson } = useCourse()
@@ -44,6 +45,10 @@ const CourseOverview: React.FC = () => {
           iste cumque, cum fuga quibusdam eveniet eaque! Ipsam modi cupiditate
           quasi odio sunt.&rdquo;
         </BlockQuote>
+        <YouTubeBlock
+          style="vertical"
+          url="https://www.youtube.com/watch?v=8AxJOYHHtzw"
+        />
       </Lesson>
     </>
   )
