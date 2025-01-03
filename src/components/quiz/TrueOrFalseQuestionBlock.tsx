@@ -1,5 +1,13 @@
-import { FC, FormEvent, useEffect, useRef, useState } from 'react'
-import { Button } from '../ui/button'
+import {
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Button, buttonVariants } from '../ui/button'
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -7,10 +15,10 @@ import { useCourse } from '../CourseProvider'
 import { type TrueOrFalseQuestion } from '@/types/global'
 
 interface TrueOrFalseQuestionProps {
-  /**
-   * question: Enter the true or false question text.
-   */
+  assessment?: boolean
   question: TrueOrFalseQuestion
+  currentQuestion?: number
+  setCurrentQuestion?: Dispatch<SetStateAction<number>>
 }
 
 // Define the type for your form data
@@ -22,7 +30,12 @@ interface FormData {
  * @param {TrueOrFalseQuestion} [question] provide the question object
  * @returns {FC} A React functional component
  */
-const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
+const TrueOrFalseQuestionBlock: FC<TrueOrFalseQuestionProps> = ({
+  assessment = false,
+  question,
+  currentQuestion = 1,
+  setCurrentQuestion,
+}) => {
   const { setSectionPassed } = useCourse()
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
@@ -47,7 +60,9 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
     setSubmitted(true)
     if (formData.studentAnswer === stringAnswer) {
       setCorrect(true)
-      setSectionPassed(true)
+      if (!assessment) {
+        setSectionPassed(true)
+      }
     } else {
       setCorrect(false)
     }
@@ -123,7 +138,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
                 <span ref={feedbackRef} tabIndex={-1}>
                   {question.incorrectFeedback
                     ? question.incorrectFeedback
-                    : `Incorrect. Try again?`}
+                    : `Incorrect.`}
                 </span>
               </>
             )}
@@ -150,7 +165,7 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
                 Submit
               </Button>
             )}
-            {correct === false && submitted === true && (
+            {correct === false && submitted === true && !assessment && (
               <motion.button
                 type="reset"
                 initial={{ opacity: 0, y: 75 }}
@@ -161,6 +176,21 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
                 <p className="text-center text-sm">Retry</p>
               </motion.button>
             )}
+            {submitted === true && assessment && (
+              <motion.button
+                initial={{ opacity: 0, y: 75 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 75 }}
+                onClick={e => {
+                  e.preventDefault()
+                  if (setCurrentQuestion)
+                    setCurrentQuestion(currentQuestion + 1)
+                }}
+                className={cn(buttonVariants({ variant: 'default' }))}
+              >
+                <p className="text-center text-sm">Continue</p>
+              </motion.button>
+            )}
           </AnimatePresence>
         </div>
       </form>
@@ -168,4 +198,4 @@ const TrueOrFalseQuestion: FC<TrueOrFalseQuestionProps> = ({ question }) => {
   )
 }
 
-export default TrueOrFalseQuestion
+export default TrueOrFalseQuestionBlock

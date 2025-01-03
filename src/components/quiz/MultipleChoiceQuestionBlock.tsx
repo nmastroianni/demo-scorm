@@ -1,12 +1,23 @@
 import { cn } from '@/lib/utils'
 import { CircleX, PartyPopper, Undo } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { FC, FormEvent, useEffect, useRef, useState } from 'react'
-import { Button } from '../ui/button'
+import {
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Button, buttonVariants } from '../ui/button'
 import { useCourse } from '../CourseProvider'
 import { type MultipleChoiceQuestion } from '@/types/global'
 
 interface MultipleChoiceQuestionProps {
+  assessment?: boolean
+  currentQuestion: number
+  setCurrentQuestion: Dispatch<SetStateAction<number>>
   question: MultipleChoiceQuestion
 }
 
@@ -15,7 +26,10 @@ interface FormData {
   studentAnswer: string | null
 }
 
-const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
+const MultipleChoiceQuestionBlock: FC<MultipleChoiceQuestionProps> = ({
+  assessment = false,
+  currentQuestion = 1,
+  setCurrentQuestion,
   question,
 }) => {
   const { setSectionPassed } = useCourse()
@@ -43,7 +57,9 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
     setSubmitted(true)
     if (formData.studentAnswer === question.options[question.answer]) {
       setCorrect(true)
-      setSectionPassed(true)
+      if (!assessment) {
+        setSectionPassed(true)
+      }
     } else {
       setCorrect(false)
     }
@@ -135,16 +151,31 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
                 Submit
               </Button>
             )}
-            {correct === false && submitted === true && (
+
+            {correct === false && submitted === true && !assessment && (
               <motion.button
                 type="reset"
                 initial={{ opacity: 0, y: 75 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 75 }}
-                className="rounded-full ring-slate-700 focus:outline-none focus:ring dark:ring-slate-200"
               >
                 <Undo width={40} height={40} />
                 <p className="text-center text-sm">Retry</p>
+              </motion.button>
+            )}
+            {submitted === true && assessment && (
+              <motion.button
+                initial={{ opacity: 0, y: 75 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 75 }}
+                onClick={e => {
+                  e.preventDefault()
+                  if (setCurrentQuestion)
+                    setCurrentQuestion(currentQuestion + 1)
+                }}
+                className={cn(buttonVariants({ variant: 'default' }))}
+              >
+                <p className="text-center text-sm">Continue</p>
               </motion.button>
             )}
           </AnimatePresence>
@@ -154,4 +185,4 @@ const MultipleChoiceQuestion: FC<MultipleChoiceQuestionProps> = ({
   )
 }
 
-export default MultipleChoiceQuestion
+export default MultipleChoiceQuestionBlock

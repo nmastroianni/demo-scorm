@@ -2,9 +2,10 @@ import { cn, getYouTubeVideoId } from '@/lib/utils'
 import { FC } from 'react'
 interface YouTubeBlockProps {
   url: string
+  title: string
 }
 
-const YouTubeBlock: FC<YouTubeBlockProps> = ({ url }) => {
+const YouTubeBlock: FC<YouTubeBlockProps> = ({ title, url }) => {
   const video = getYouTubeVideoId(url)
 
   return (
@@ -21,6 +22,7 @@ const YouTubeBlock: FC<YouTubeBlockProps> = ({ url }) => {
           })}
         >
           <iframe
+            title={title}
             src={`https://www.youtube.com/embed/${video.vid}?feature=oembed`}
             allowFullScreen
             allow="accelerometer; picture-in-picture;"

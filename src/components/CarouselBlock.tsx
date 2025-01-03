@@ -14,7 +14,6 @@ interface CarouselBlockProps {
 }
 
 const CarouselBlock: FC<CarouselBlockProps> = ({ images }) => {
-  console.log(images)
   return (
     <div className="mx-auto flex items-center justify-center px-4 py-4 lg:px-12 lg:py-8">
       <Carousel className="w-full">

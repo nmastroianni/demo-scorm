@@ -69,7 +69,10 @@ const CourseOverview: React.FC = () => {
           quasi odio sunt.&rdquo;
         </BlockQuoteBlock>
         <ContainerBlock width="2xl">
-          <YouTubeBlock url="https://www.youtube.com/watch?v=o3FzIZvYsII" />
+          <YouTubeBlock
+            title="Video Title Goes Here"
+            url="https://www.youtube.com/watch?v=o3FzIZvYsII"
+          />
         </ContainerBlock>
         <ContainerBlock width="md">
           <AudioBlock

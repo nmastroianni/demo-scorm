@@ -13,14 +13,14 @@ import NextSectionButton from '@/components/NextSectionButton'
 import { AnimatePresence } from 'motion/react'
 import CallOutBlock from '@/components/CallOutBlock'
 import CheckForUnderstanding from '@/components/quiz/CheckForUnderstanding'
-import TrueOrFalseQuestion from '@/components/quiz/TrueOrFalseQuestion'
+import TrueOrFalseQuestion from '@/components/quiz/TrueOrFalseQuestionBlock'
 import {
   MultipleChoiceQuestions,
   MultipleSelectQuestions,
   TrueOrFalseQuestions,
 } from '@/lib/questions'
 import WhileInView from '@/components/WhileInView'
-import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestion'
+import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestionBlock'
 import MultipleSelectQuestion from '@/components/quiz/MultipleSelectQuestion'
 import type { Hotspot } from '@/types/global'
 import LessonSectionBlock from '@/components/LessonSectionBlock'
