@@ -3,11 +3,12 @@ import {
   MultipleSelectQuestion,
   TrueOrFalseQuestion,
 } from '@/types/global'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import ContainerBlock from '../ContainerBlock'
 import { AnimatePresence, motion } from 'motion/react'
 import TrueOrFalseQuestionBlock from './TrueOrFalseQuestionBlock'
 import MultipleChoiceQuestionBlock from './MultipleChoiceQuestionBlock'
+import MultipleSelectQuestionBlock from './MultipleSelectQuestionBlock'
 interface AssessmentBlockProps {
   questions: Array<
     MultipleChoiceQuestion | MultipleSelectQuestion | TrueOrFalseQuestion
@@ -27,11 +28,8 @@ const AssessmentBlock: FC<AssessmentBlockProps> = ({
     ? [...questions].sort(() => Math.random() - 0.5)
     : questions
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  useEffect(() => {
-    console.log('currentQuestion is ', currentQuestion)
-  }, [currentQuestion])
   return (
-    <ContainerBlock width="md">
+    <ContainerBlock width="md" className="pt-4 lg:py-12">
       <AnimatePresence>
         {currentQuestion < questions.length &&
           questions[currentQuestion].type === 'TrueOrFalse' && (
@@ -49,6 +47,18 @@ const AssessmentBlock: FC<AssessmentBlockProps> = ({
           questions[currentQuestion].type === 'MultipleChoice' && (
             <motion.div exit={{ opacity: 0 }}>
               <MultipleChoiceQuestionBlock
+                assessment
+                question={questions[currentQuestion]}
+                currentQuestion={currentQuestion}
+                setCurrentQuestion={setCurrentQuestion}
+                key={questions[currentQuestion].id}
+              />
+            </motion.div>
+          )}
+        {currentQuestion < questions.length &&
+          questions[currentQuestion].type === 'MultipleSelect' && (
+            <motion.div exit={{ opacity: 0 }}>
+              <MultipleSelectQuestionBlock
                 assessment
                 question={questions[currentQuestion]}
                 currentQuestion={currentQuestion}

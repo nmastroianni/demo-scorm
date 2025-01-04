@@ -20,10 +20,10 @@ import {
   TrueOrFalseQuestions,
 } from '@/lib/questions'
 import WhileInView from '@/components/WhileInView'
-import MultipleChoiceQuestion from '@/components/quiz/MultipleChoiceQuestionBlock'
-import MultipleSelectQuestion from '@/components/quiz/MultipleSelectQuestion'
 import type { Hotspot } from '@/types/global'
 import LessonSectionBlock from '@/components/LessonSectionBlock'
+import MultipleChoiceQuestionBlock from '@/components/quiz/MultipleChoiceQuestionBlock'
+import MultipleSelectQuestionBlock from '@/components/quiz/MultipleSelectQuestionBlock'
 
 const Lesson1: React.FC = () => {
   const { currentSection } = useCourse()
@@ -184,7 +184,7 @@ const Lesson1: React.FC = () => {
                 </p>
               </TextAsideBlock>
               <CheckForUnderstanding>
-                <MultipleChoiceQuestion question={question2} />
+                <MultipleChoiceQuestionBlock question={question2} />
               </CheckForUnderstanding>
               {currentSection === 1 && <NextSectionButton contingent />}
             </ContainerBlock>
@@ -254,7 +254,7 @@ const Lesson1: React.FC = () => {
                 quidem incidunt commodi provident labore! Optio.
               </p>
               <CheckForUnderstanding>
-                <MultipleSelectQuestion question={question3} />
+                <MultipleSelectQuestionBlock question={question3} />
               </CheckForUnderstanding>
             </ContainerBlock>
           </LessonSectionBlock>

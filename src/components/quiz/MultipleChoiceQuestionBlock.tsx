@@ -16,8 +16,8 @@ import { type MultipleChoiceQuestion } from '@/types/global'
 
 interface MultipleChoiceQuestionProps {
   assessment?: boolean
-  currentQuestion: number
-  setCurrentQuestion: Dispatch<SetStateAction<number>>
+  currentQuestion?: number
+  setCurrentQuestion?: Dispatch<SetStateAction<number>>
   question: MultipleChoiceQuestion
 }
 

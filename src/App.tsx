@@ -42,6 +42,13 @@ function App(): JSX.Element {
       options: ['Fish', 'Insects', 'Rodents', 'Other birds'],
       answer: 0,
     },
+    {
+      type: 'MultipleSelect',
+      id: 'q4',
+      question: 'What colors do you find on a common loon?',
+      options: ['Black', 'White', 'Red', 'Blue'],
+      answer: [0, 1, 2],
+    },
   ]
 
   return (
