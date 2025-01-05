@@ -58,7 +58,12 @@ function App(): JSX.Element {
         {currentLesson === 1 && <Lesson1 key={2} />}
         {currentLesson === 2 && <Lesson2 key={3} />}
         {currentLesson === 3 && (
-          <AssessmentBlock key={4} questions={questions} passingScore={80} />
+          <AssessmentBlock key={4} questions={questions} passingScore={80}>
+            <p>
+              This is the content that will be shown when someone passes the
+              assessment
+            </p>
+          </AssessmentBlock>
         )}
         {currentLesson > 3 && (
           <Container width="prose">
