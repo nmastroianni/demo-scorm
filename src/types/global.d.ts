@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 
-interface Window {
+interface Window extends window {
   GetStatus: () => void
   SetFailed: () => void
   SetPassed: () => void

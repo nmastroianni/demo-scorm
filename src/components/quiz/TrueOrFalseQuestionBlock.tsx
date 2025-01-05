@@ -36,7 +36,11 @@ const TrueOrFalseQuestionBlock: FC<TrueOrFalseQuestionProps> = ({
   currentQuestion = 1,
   setCurrentQuestion,
 }) => {
-  const { setSectionPassed } = useCourse()
+  const {
+    correctAssessmentItems,
+    setSectionPassed,
+    setCorrectAssessmentItems,
+  } = useCourse()
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
@@ -62,7 +66,8 @@ const TrueOrFalseQuestionBlock: FC<TrueOrFalseQuestionProps> = ({
       setCorrect(true)
       if (!assessment) {
         setSectionPassed(true)
-      }
+      } else if (assessment)
+        setCorrectAssessmentItems(correctAssessmentItems + 1)
     } else {
       setCorrect(false)
     }

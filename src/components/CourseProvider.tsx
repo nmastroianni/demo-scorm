@@ -12,11 +12,17 @@ interface CourseContextProps {
   currentSection: number
   lessonLength: number
   sectionPassed: boolean
+  coursePassed: boolean
+  assessmentItems: number
+  correctAssessmentItems: number
   WindowRef: React.RefObject<Window | null>
   setCurrentLesson: React.Dispatch<React.SetStateAction<number>>
   setCurrentSection: React.Dispatch<React.SetStateAction<number>>
   setLessonLength: React.Dispatch<React.SetStateAction<number>>
   setSectionPassed: React.Dispatch<React.SetStateAction<boolean>>
+  setCoursePassed: React.Dispatch<React.SetStateAction<boolean>>
+  setAssessmentItems: React.Dispatch<React.SetStateAction<number>>
+  setCorrectAssessmentItems: React.Dispatch<React.SetStateAction<number>>
 }
 const CourseContext = createContext<CourseContextProps | undefined>(undefined)
 const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -24,6 +30,9 @@ const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentSection, setCurrentSection] = useState(0)
   const [lessonLength, setLessonLength] = useState(0)
   const [sectionPassed, setSectionPassed] = useState(false)
+  const [coursePassed, setCoursePassed] = useState(false)
+  const [assessmentItems, setAssessmentItems] = useState(0)
+  const [correctAssessmentItems, setCorrectAssessmentItems] = useState(0)
   const WindowRef = useRef<Window | null>(null)
   useEffect(() => {
     const localLesson = Number(localStorage.getItem('lessonProgress'))
@@ -49,11 +58,17 @@ const CourseProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         currentSection,
         lessonLength,
         sectionPassed,
+        coursePassed,
+        assessmentItems,
+        correctAssessmentItems,
         WindowRef,
         setCurrentLesson,
         setCurrentSection,
         setLessonLength,
         setSectionPassed,
+        setCoursePassed,
+        setAssessmentItems,
+        setCorrectAssessmentItems,
       }}
     >
       {children}

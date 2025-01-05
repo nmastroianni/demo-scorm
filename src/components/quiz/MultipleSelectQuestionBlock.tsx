@@ -32,7 +32,11 @@ const MultipleSelectQuestionBlock: FC<MultipleSelectQuestionProps> = ({
   setCurrentQuestion,
   question,
 }) => {
-  const { setSectionPassed } = useCourse()
+  const {
+    correctAssessmentItems,
+    setSectionPassed,
+    setCorrectAssessmentItems,
+  } = useCourse()
   const [formData, setFormData] = useState<FormData>({ [question.id]: [] })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
@@ -67,6 +71,8 @@ const MultipleSelectQuestionBlock: FC<MultipleSelectQuestionProps> = ({
     setCorrect(isCorrect)
     if (!assessment) {
       setSectionPassed(isCorrect)
+    } else if (assessment) {
+      setCorrectAssessmentItems(correctAssessmentItems + 1)
     }
     if (feedbackRef.current && !isCorrect) {
       feedbackRef.current.focus()

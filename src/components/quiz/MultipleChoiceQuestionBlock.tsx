@@ -32,7 +32,11 @@ const MultipleChoiceQuestionBlock: FC<MultipleChoiceQuestionProps> = ({
   setCurrentQuestion,
   question,
 }) => {
-  const { setSectionPassed } = useCourse()
+  const {
+    correctAssessmentItems,
+    setSectionPassed,
+    setCorrectAssessmentItems,
+  } = useCourse()
   const [formData, setFormData] = useState<FormData>({ studentAnswer: null })
   const [submitted, setSubmitted] = useState(false)
   const [correct, setCorrect] = useState<null | boolean>(null)
@@ -59,6 +63,8 @@ const MultipleChoiceQuestionBlock: FC<MultipleChoiceQuestionProps> = ({
       setCorrect(true)
       if (!assessment) {
         setSectionPassed(true)
+      } else if (assessment) {
+        setCorrectAssessmentItems(correctAssessmentItems + 1)
       }
     } else {
       setCorrect(false)

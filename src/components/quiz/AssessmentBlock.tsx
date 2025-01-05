@@ -3,12 +3,13 @@ import {
   MultipleSelectQuestion,
   TrueOrFalseQuestion,
 } from '@/types/global'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import ContainerBlock from '../ContainerBlock'
 import { AnimatePresence, motion } from 'motion/react'
 import TrueOrFalseQuestionBlock from './TrueOrFalseQuestionBlock'
 import MultipleChoiceQuestionBlock from './MultipleChoiceQuestionBlock'
 import MultipleSelectQuestionBlock from './MultipleSelectQuestionBlock'
+import { useCourse } from '../CourseProvider'
 interface AssessmentBlockProps {
   questions: Array<
     MultipleChoiceQuestion | MultipleSelectQuestion | TrueOrFalseQuestion
@@ -23,11 +24,30 @@ const AssessmentBlock: FC<AssessmentBlockProps> = ({
   questions,
   randomize = false,
 }) => {
-  console.log(passingScore)
+  const { correctAssessmentItems, setAssessmentItems, setCoursePassed } =
+    useCourse()
+  setAssessmentItems(questions.length)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  useEffect(() => {
+    if (
+      (correctAssessmentItems / questions.length) * 100 >= passingScore &&
+      currentQuestion === questions.length
+    ) {
+      setCoursePassed(true)
+    } else {
+      console.log('course not yet passed')
+    }
+  }, [
+    currentQuestion,
+    correctAssessmentItems,
+    passingScore,
+    questions.length,
+    setCoursePassed,
+  ])
+
   questions = randomize
     ? [...questions].sort(() => Math.random() - 0.5)
     : questions
-  const [currentQuestion, setCurrentQuestion] = useState(0)
   return (
     <ContainerBlock width="md" className="pt-4 lg:py-12">
       <AnimatePresence>
