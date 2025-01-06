@@ -71,7 +71,7 @@ const MultipleSelectQuestionBlock: FC<MultipleSelectQuestionProps> = ({
     setCorrect(isCorrect)
     if (!assessment) {
       setSectionPassed(isCorrect)
-    } else if (assessment) {
+    } else if (assessment && isCorrect) {
       setCorrectAssessmentItems(correctAssessmentItems + 1)
     }
     if (feedbackRef.current && !isCorrect) {
