@@ -4,7 +4,6 @@ import loon from '@/assets/images/loon.jpg'
 import ContainerBlock from '@/components/ContainerBlock'
 import LabeledImageBlock from '@/components/LabeledImageBlock'
 import NextLessonButton from '@/components/NextLessonButton'
-import PreviousLessonButton from '@/components/PreviousLessonButton'
 import TextAsideBlock from '@/components/TextAsideBlock'
 import LessonBlock from '@/components/LessonBlock'
 import React from 'react'
@@ -66,7 +65,6 @@ const Lesson1: React.FC = () => {
   )
   return (
     <LessonBlock>
-      <PreviousLessonButton text="Main Menu" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
           <LessonSectionBlock id="section1" key={1}>
