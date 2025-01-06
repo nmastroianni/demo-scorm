@@ -1,6 +1,12 @@
 import React, { ReactNode, useState } from 'react'
 import WhileInView from './WhileInView'
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog'
 interface TextAside {
   altText: string
   children: ReactNode
@@ -34,6 +40,10 @@ const TextAsideBlock: React.FC<TextAside> = ({
                 </figure>
               </DialogTrigger>
               <DialogContent className="max-w-screen-lg p-8">
+                <DialogTitle className="sr-only">{altText}</DialogTitle>
+                <DialogDescription className="sr-only">
+                  {altText}
+                </DialogDescription>
                 <img
                   src={imageUrl}
                   alt={altText}
