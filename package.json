@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cd dist && zip -r learn-scorm-1.zip * && mv ./learn-scorm-1.zip .. && cd ..",
+    "build": "tsc -b && vite build && cd dist && zip -r scorm-package.zip * && mv ./scorm-package.zip .. && cd ..",
     "lint": "eslint .",
     "preview": "vite preview"
   },
