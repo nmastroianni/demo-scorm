@@ -8,17 +8,28 @@ import Container from './components/ContainerBlock'
 import { Button } from './components/ui/button'
 import AssessmentBlock from './components/quiz/AssessmentBlock'
 import {
+  Lesson,
   MultipleChoiceQuestion,
   MultipleSelectQuestion,
   TrueOrFalseQuestion,
 } from './types/global'
 import { ThemeToggle } from './components/ThemeToggle'
-import { House } from 'lucide-react'
-import { cn } from './lib/utils'
 import Headroom from 'react-headroom'
+import NavigationMenu from './components/NavigationMenu'
 
 function App(): JSX.Element {
   const { currentLesson, setCurrentLesson } = useCourse()
+
+  const lessons: Array<Lesson> = [
+    {
+      id: 1,
+      title: 'Lesson 1 Title',
+    },
+    {
+      id: 2,
+      title: 'Lesson 2 Title',
+    },
+  ]
 
   const questions: Array<
     MultipleChoiceQuestion | MultipleSelectQuestion | TrueOrFalseQuestion
@@ -53,21 +64,11 @@ function App(): JSX.Element {
 
   return (
     <div className="bg-slate-200 dark:bg-slate-900">
-      <Headroom>
+      <Headroom style={{ zIndex: 20 }}>
         <header className="bg-slate-200/95 backdrop-blur dark:bg-slate-900/95">
           <div className="mx-auto flex max-w-screen-lg justify-between px-8 py-4 lg:px-16">
-            <Button
-              className={cn('transition-all duration-150 ease-in-out', {
-                'scale-0': currentLesson === 0,
-              })}
-              variant={'outline'}
-              size="icon"
-              onClick={() => {
-                setCurrentLesson(0)
-              }}
-            >
-              <House className="h-[1rem] w-[1rem]" />
-            </Button>
+            <NavigationMenu lessons={lessons} />
+
             <ThemeToggle />
           </div>
         </header>

@@ -11,6 +11,11 @@ interface Window extends window {
   RecordFillInInteraction: () => void
 }
 
+interface Lesson {
+  id: number
+  title: string
+}
+
 /**
  * This type provides data to the LabeledImage component
  */

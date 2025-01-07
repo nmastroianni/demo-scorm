@@ -6,7 +6,6 @@ import LessonBlock from '@/components/LessonBlock'
 import ListBlock from '@/components/ListBlock'
 import ListItem from '@/components/ListItem'
 import NextLesson from '@/components/NextLessonButton'
-import PreviousLesson from '@/components/PreviousLessonButton'
 import TabsBlock from '@/components/TabsBlock'
 import { AccordionBlockItem, TabBlockItem } from '@/types/global'
 import { AnimatePresence } from 'motion/react'
@@ -63,7 +62,6 @@ const Lesson2: React.FC = () => {
   ]
   return (
     <LessonBlock>
-      <PreviousLesson text="Go Back to Lesson 1" />
       <AnimatePresence mode="sync">
         {currentSection >= 0 && (
           <LessonSectionBlock id="section2-1">
